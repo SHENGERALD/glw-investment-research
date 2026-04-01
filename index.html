@@ -1,0 +1,849 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LONG Corning (GLW) — Investment Research Dashboard</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Sans+3:wght@400;600;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<!-- STICKY NAVIGATION -->
+<nav class="nav" id="navbar">
+  <div class="nav-inner">
+    <a href="#hero" class="nav-logo">
+      <svg width="28" height="28" viewBox="0 0 32 32" fill="none" aria-label="GLW Logo">
+        <rect x="2" y="2" width="28" height="28" rx="4" stroke="currentColor" stroke-width="2.5"/>
+        <path d="M8 16h6v6H8z" fill="currentColor" opacity="0.3"/>
+        <path d="M18 10h6v12h-6z" fill="currentColor" opacity="0.5"/>
+        <path d="M8 8h6v6H8z" fill="currentColor"/>
+      </svg>
+      <span>GLW Research</span>
+    </a>
+    <div class="nav-links">
+      <a href="#thesis">Thesis</a>
+      <a href="#timeline">Timeline</a>
+      <a href="#sotp">SOTP</a>
+      <a href="#segments">Segments</a>
+      <a href="#financials">Financials</a>
+      <a href="#estimates">Estimates</a>
+      <a href="#optionality">Optionality</a>
+      <a href="#supply-chain">Supply Chain</a>
+      <a href="#catalysts">Catalysts</a>
+      <a href="#moat">Moat</a>
+      <a href="#risk-comparison">Risk</a>
+    </div>
+    <div class="nav-cta">
+      <span class="nav-price">GLW $135.95</span>
+      <span class="nav-rating">LONG</span>
+    </div>
+  </div>
+</nav>
+
+<!-- 1. HERO SECTION -->
+<section class="hero" id="hero">
+  <div class="hero-bg-pattern"></div>
+  <div class="container hero-content">
+    <div class="hero-badge">2026 Stock Pitch Competition</div>
+    <h1 class="hero-title">LONG <span class="hero-ticker">Corning</span> <span class="hero-symbol">(GLW)</span></h1>
+    <p class="hero-tagline">Glass substrates are the structural shift enabling next-gen AI packaging — and Corning is the picks-and-shovels play the market hasn't priced in.</p>
+    <div class="kpi-grid">
+      <div class="kpi-card">
+        <span class="kpi-label">Stock Price</span>
+        <span class="kpi-value" data-target="135.95" data-prefix="$">$0</span>
+      </div>
+      <div class="kpi-card">
+        <span class="kpi-label">Market Cap</span>
+        <span class="kpi-value" data-target="116.6" data-prefix="$" data-suffix="B">$0B</span>
+      </div>
+      <div class="kpi-card kpi-card--accent">
+        <span class="kpi-label">12-Mo Target</span>
+        <span class="kpi-value">$155–$166</span>
+        <span class="kpi-delta">+14–22%</span>
+      </div>
+      <div class="kpi-card">
+        <span class="kpi-label">P/E (TTM)</span>
+        <span class="kpi-value" data-target="74.29" data-suffix="x">0x</span>
+      </div>
+      <div class="kpi-card">
+        <span class="kpi-label">P/E (FY26E)</span>
+        <span class="kpi-value" data-target="26.7" data-suffix="x">0x</span>
+      </div>
+      <div class="kpi-card">
+        <span class="kpi-label">Dividend Yield</span>
+        <span class="kpi-value" data-target="1.0" data-suffix="%">0%</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 2. INVESTMENT THESIS -->
+<section class="section" id="thesis">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-number">01</span>
+      <h2>Investment Thesis</h2>
+      <p class="section-subtitle">Three converging structural catalysts</p>
+    </div>
+    <div class="thesis-grid">
+      <div class="thesis-card reveal">
+        <div class="thesis-icon">
+          <svg width="40" height="40" viewBox="0 0 40 40" fill="none"><circle cx="20" cy="20" r="18" stroke="currentColor" stroke-width="2"/><path d="M10 20h20M20 10v20" stroke="currentColor" stroke-width="2"/><circle cx="20" cy="20" r="6" fill="currentColor" opacity="0.2"/></svg>
+        </div>
+        <h3>AI Optical Supercycle</h3>
+        <div class="thesis-stat">+35% YoY</div>
+        <p>Optical Communications revenue grew 35% YoY to $6.27B in FY2025. The Meta $6B multi-year deal anchors ~40% of segment revenue. BofA estimates scale-out revenue reaching $10.3B by 2030. Enterprise grew 61% YoY.</p>
+      </div>
+      <div class="thesis-card reveal">
+        <div class="thesis-icon">
+          <svg width="40" height="40" viewBox="0 0 40 40" fill="none"><rect x="6" y="14" width="28" height="18" rx="2" stroke="currentColor" stroke-width="2"/><rect x="12" y="8" width="16" height="8" rx="1" stroke="currentColor" stroke-width="2"/><path d="M14 22h12M14 26h8" stroke="currentColor" stroke-width="2" opacity="0.5"/></svg>
+        </div>
+        <h3>Semiconductor Glass Free Call Option</h3>
+        <div class="thesis-stat">$0 Priced In</div>
+        <p>Zero mentions of glass substrates in 4 quarters of earnings calls = zero priced by analysts. CEO Wendell Weeks confirmed: "On track to double our semiconductor business by end of the decade." This is the alpha.</p>
+      </div>
+      <div class="thesis-card reveal">
+        <div class="thesis-icon">
+          <svg width="40" height="40" viewBox="0 0 40 40" fill="none"><path d="M8 32L16 18L24 24L32 8" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/><circle cx="32" cy="8" r="3" fill="currentColor"/></svg>
+        </div>
+        <h3>Springboard Plan Execution</h3>
+        <div class="thesis-stat">$11B by 2028</div>
+        <p>Management upgraded its plan to $11B in incremental annualized sales by end of 2028 (from $8B). The 20% operating margin target was achieved a full year early in Q4 2025 (20.2%). Execution credibility is established.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 3. THREE-STAGE GLASS SUBSTRATE TIMELINE -->
+<section class="section section--dark" id="timeline">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-number">02</span>
+      <h2>Glass Substrate Adoption</h2>
+      <p class="section-subtitle">Three-stage roadmap from glass carrier to glass interposer</p>
+    </div>
+    <div class="timeline-container">
+      <div class="timeline-track">
+        <div class="timeline-line"></div>
+        <div class="timeline-stage active" data-stage="1">
+          <div class="stage-dot"></div>
+          <div class="stage-badge">ACTIVE NOW</div>
+          <h3>Stage 1: Glass Carrier</h3>
+          <span class="stage-date">2025–2026</span>
+        </div>
+        <div class="timeline-stage" data-stage="2">
+          <div class="stage-dot"></div>
+          <div class="stage-badge stage-badge--cert">CERTIFICATION</div>
+          <h3>Stage 2: Glass Core Substrate</h3>
+          <span class="stage-date">2026–2028</span>
+        </div>
+        <div class="timeline-stage" data-stage="3">
+          <div class="stage-dot"></div>
+          <div class="stage-badge stage-badge--plan">PLANNED</div>
+          <h3>Stage 3: Glass Interposer</h3>
+          <span class="stage-date">2028+</span>
+        </div>
+      </div>
+      <div class="stage-details">
+        <div class="stage-detail visible" id="stage-detail-1">
+          <h4>Glass Carrier — TSMC CoPoS</h4>
+          <p>TSMC's Chip-on-Panel-on-Substrate (CoPoS) uses 310×310mm square glass carriers for next-gen AI packaging. Corning is the established supplier of fusion-drawn glass carriers — the only company producing panels at semiconductor-grade quality at scale.</p>
+          <div class="stage-facts">
+            <span>TSMC pilot 2026</span>
+            <span>Mass production 2028–29</span>
+            <span>NVIDIA first adopter</span>
+            <span>90% trial yields</span>
+          </div>
+        </div>
+        <div class="stage-detail" id="stage-detail-2">
+          <h4>Glass Core Substrate (GCS) — Intel, AMD/Absolics</h4>
+          <p>Replaces ABF core layer with glass, enabling 10x interconnect density. Intel's NEPCON Japan 2026 demo showed first thick-core (10-2-10) glass substrate with EMIB — zero SeWaRe micro-cracks. AMD certifying with Absolics, targeting MI400-series AI accelerators.</p>
+          <div class="stage-facts">
+            <span>Intel HVM H2 2026</span>
+            <span>AMD certification Q1-Q2 2026</span>
+            <span>600+ Intel patents</span>
+            <span>&lt;20μm warpage</span>
+          </div>
+        </div>
+        <div class="stage-detail" id="stage-detail-3">
+          <h4>Glass Interposer — Samsung</h4>
+          <p>Samsung Electronics confirmed 2028 introduction of glass interposers replacing silicon interposers for GPU/HBM connections. Samsung SEMCO pilot production active at Sejong — project elevated from R&D to Business Unit in Feb 2026. This is the major catalyst.</p>
+          <div class="stage-facts">
+            <span>Samsung SEMCO mass prod. 2027</span>
+            <span>Samsung Electronics adoption 2028</span>
+            <span>Samples to AMD, Broadcom</span>
+            <span>₩12T market by 2028</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="insight-callout reveal">
+      <div class="insight-icon">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+      </div>
+      <div>
+        <strong>Key Insight — Source of Alpha:</strong> NVIDIA Vera Rubin (2026) does NOT use glass substrates. This is the market's misunderstanding. But Glass Carriers are already in TSMC CoPoS today, AMD is certifying glass core substrates, and Samsung's 2028 Glass Interposer plan is the real major catalyst. The opportunity doesn't depend on NVIDIA.
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 4. SOTP VALUATION MODEL -->
+<section class="section" id="sotp">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-number">03</span>
+      <h2>Sum-of-the-Parts Valuation</h2>
+      <p class="section-subtitle">Interactive SOTP model — toggle between scenarios</p>
+    </div>
+    <div class="sotp-controls">
+      <button class="sotp-btn" data-scenario="bear">Bear Case</button>
+      <button class="sotp-btn active" data-scenario="base">Base Case</button>
+      <button class="sotp-btn" data-scenario="bull">Bull Case</button>
+    </div>
+    <div class="sotp-summary reveal">
+      <div class="sotp-metric">
+        <span class="sotp-metric-label">Total Segment EV</span>
+        <span class="sotp-metric-value" id="sotp-total-ev">$108.0B</span>
+      </div>
+      <div class="sotp-metric">
+        <span class="sotp-metric-label">Less: Net Debt</span>
+        <span class="sotp-metric-value sotp-negative">($8.7B)</span>
+      </div>
+      <div class="sotp-metric sotp-metric--highlight">
+        <span class="sotp-metric-label">Implied Price/Share</span>
+        <span class="sotp-metric-value" id="sotp-price">$116</span>
+      </div>
+      <div class="sotp-metric">
+        <span class="sotp-metric-label">vs. Current $135.95</span>
+        <span class="sotp-metric-value" id="sotp-upside">-15%</span>
+      </div>
+    </div>
+    <div class="chart-container reveal">
+      <canvas id="sotpChart"></canvas>
+    </div>
+    <div class="sotp-callout reveal">
+      <strong>Semiconductor Glass (highlighted):</strong> The SOTP base case values semi glass at just $4.5B (30x EBITDA). This represents only 4.2% of total segment EV — yet CEO confirmed doubling the semiconductor business by end of decade. NPV analysis: Base $3.8B ($4.4/share), Bull $7.6B ($8.9/share). This is genuinely a free call option.
+    </div>
+  </div>
+</section>
+
+<!-- 5. SEGMENT REVENUE BREAKDOWN -->
+<section class="section section--alt" id="segments">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-number">04</span>
+      <h2>Segment Revenue Breakdown</h2>
+      <p class="section-subtitle">FY2025 revenue mix and five-year optical growth trajectory</p>
+    </div>
+    <div class="charts-duo reveal">
+      <div class="chart-card">
+        <h3>FY2025 Revenue by Segment ($15.6B)</h3>
+        <div class="chart-wrapper">
+          <canvas id="segmentDoughnut"></canvas>
+        </div>
+      </div>
+      <div class="chart-card">
+        <h3>Revenue Trend 2021–2025 ($B)</h3>
+        <div class="chart-wrapper">
+          <canvas id="revenueTrend"></canvas>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 6. FINANCIAL PERFORMANCE DASHBOARD -->
+<section class="section" id="financials">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-number">05</span>
+      <h2>Financial Performance</h2>
+      <p class="section-subtitle">FY2025 results — accelerating growth across all metrics</p>
+    </div>
+    <div class="metric-grid reveal">
+      <div class="metric-card">
+        <span class="metric-label">Revenue</span>
+        <span class="metric-value" data-target="15.6" data-prefix="$" data-suffix="B">$0B</span>
+        <span class="metric-delta positive">+19% YoY</span>
+      </div>
+      <div class="metric-card">
+        <span class="metric-label">Operating Income</span>
+        <span class="metric-value" data-target="2.3" data-prefix="$" data-suffix="B">$0B</span>
+        <span class="metric-delta positive">+105% YoY</span>
+      </div>
+      <div class="metric-card">
+        <span class="metric-label">EPS (GAAP)</span>
+        <span class="metric-value" data-target="1.86" data-prefix="$">$0</span>
+        <span class="metric-delta positive">+215% YoY</span>
+      </div>
+      <div class="metric-card">
+        <span class="metric-label">Free Cash Flow</span>
+        <span class="metric-value" data-target="1.4" data-prefix="$" data-suffix="B">$0B</span>
+        <span class="metric-delta positive">+97% YoY</span>
+      </div>
+      <div class="metric-card">
+        <span class="metric-label">Operating Margin</span>
+        <span class="metric-value" data-target="14.9" data-suffix="%">0%</span>
+        <span class="metric-delta positive">+500bps YoY</span>
+      </div>
+      <div class="metric-card">
+        <span class="metric-label">Gross Margin</span>
+        <span class="metric-value" data-target="35.3" data-suffix="%">0%</span>
+        <span class="metric-delta positive">+250bps YoY</span>
+      </div>
+    </div>
+    <div class="charts-duo reveal">
+      <div class="chart-card">
+        <h3>Revenue Growth + Forward Estimates ($B)</h3>
+        <div class="chart-wrapper">
+          <canvas id="revenueGrowthChart"></canvas>
+        </div>
+      </div>
+      <div class="chart-card">
+        <h3>EPS Growth + Forward Estimates</h3>
+        <div class="chart-wrapper">
+          <canvas id="epsGrowthChart"></canvas>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 7. FORWARD ESTIMATES & VALUATION -->
+<section class="section section--alt" id="estimates">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-number">06</span>
+      <h2>Forward Estimates & Valuation</h2>
+      <p class="section-subtitle">P/E multiple compression as earnings growth catches up to price</p>
+    </div>
+    <div class="estimates-grid reveal">
+      <div class="chart-card chart-card--wide">
+        <h3>P/E Multiple Compression Path</h3>
+        <div class="chart-wrapper">
+          <canvas id="peCompressionChart"></canvas>
+        </div>
+      </div>
+    </div>
+    <div class="estimates-table reveal">
+      <table>
+        <thead>
+          <tr>
+            <th>Metric</th>
+            <th>FY2025A</th>
+            <th>FY2026E</th>
+            <th>FY2027E</th>
+            <th>FY2028E</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Revenue</td>
+            <td>$15.6B</td>
+            <td>$18.8B</td>
+            <td>$21.4B</td>
+            <td>$23.9B</td>
+          </tr>
+          <tr>
+            <td>EPS</td>
+            <td>$1.86</td>
+            <td>$5.09</td>
+            <td>$6.44</td>
+            <td>$7.50</td>
+          </tr>
+          <tr>
+            <td>P/E at $135.95</td>
+            <td>74.3x</td>
+            <td>26.7x</td>
+            <td>21.1x</td>
+            <td>18.1x</td>
+          </tr>
+          <tr>
+            <td>EV/EBITDA</td>
+            <td>22.5x</td>
+            <td>24.1x</td>
+            <td>20.5x</td>
+            <td>17.6x</td>
+          </tr>
+          <tr class="table-highlight">
+            <td>EPS Growth</td>
+            <td>+215%</td>
+            <td>+174%</td>
+            <td>+26.5%</td>
+            <td>+16.5%</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="target-cards reveal">
+      <div class="target-card">
+        <span class="target-scenario">Bear</span>
+        <span class="target-price">$74</span>
+        <span class="target-basis">20x FY27E P/E</span>
+      </div>
+      <div class="target-card">
+        <span class="target-scenario">Base</span>
+        <span class="target-price">$155–$166</span>
+        <span class="target-basis">25-30x FY27E P/E + semi glass</span>
+      </div>
+      <div class="target-card target-card--primary">
+        <span class="target-scenario">Bull (SOTP)</span>
+        <span class="target-price">$174</span>
+        <span class="target-basis">Full optical premium + NPV $8.9/sh</span>
+      </div>
+      <div class="target-card target-card--accent">
+        <span class="target-scenario">Full Thesis (2028)</span>
+        <span class="target-price">$176+</span>
+        <span class="target-basis">Semi glass $2B revenue by 2030</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 8. SEMICONDUCTOR GLASS OPTIONALITY -->
+<section class="section section--optionality" id="optionality">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-number">07</span>
+      <h2>The Free Call Option</h2>
+      <p class="section-subtitle">Semiconductor glass business — zero priced, potentially material</p>
+    </div>
+    <div class="option-hero reveal">
+      <div class="option-stat-grid">
+        <div class="option-stat">
+          <span class="option-stat-value">0</span>
+          <span class="option-stat-label">Earnings call mentions of "glass substrate" in FY2025</span>
+        </div>
+        <div class="option-stat">
+          <span class="option-stat-value">$0</span>
+          <span class="option-stat-label">Amount analysts attribute to semi glass in consensus models</span>
+        </div>
+        <div class="option-stat option-stat--accent">
+          <span class="option-stat-value">$4.4/sh</span>
+          <span class="option-stat-label">Base NPV of semiconductor glass option</span>
+        </div>
+        <div class="option-stat option-stat--accent">
+          <span class="option-stat-value">$8.9/sh</span>
+          <span class="option-stat-label">Bull NPV of semiconductor glass option</span>
+        </div>
+      </div>
+    </div>
+    <div class="option-details reveal">
+      <div class="option-col">
+        <h3>CEO Confirmation</h3>
+        <blockquote>"We are on track to double our semiconductor business by the end of the decade."<br><cite>— Wendell Weeks, CEO, Q3 2025</cite></blockquote>
+        <h3>TAM Estimates</h3>
+        <ul>
+          <li><strong>$3.8B by 2032</strong> — Semiconductor glass packaging (Dataintelo)</li>
+          <li><strong>$31B by 2030</strong> — Advanced IC substrate market (Yole Group)</li>
+          <li><strong>$572M by 2031</strong> — Glass Core Substrate market (IntelMarketResearch)</li>
+        </ul>
+      </div>
+      <div class="option-col">
+        <h3>NPV Optionality Valuation</h3>
+        <div class="option-table-wrapper">
+          <table class="option-table">
+            <thead>
+              <tr><th>Scenario</th><th>2030E Rev</th><th>NPV</th><th>Per Share</th><th>% of Mkt Cap</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>Bear</td><td>$500M</td><td>$1.9B</td><td>$2.2</td><td>1.6%</td></tr>
+              <tr><td>Base</td><td>$1.0B</td><td>$3.8B</td><td>$4.4</td><td>3.3%</td></tr>
+              <tr class="table-highlight"><td>Bull</td><td>$2.0B</td><td>$7.6B</td><td>$8.9</td><td>6.5%</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    <div class="option-bar-section reveal">
+      <h3>What's Priced vs. What Exists</h3>
+      <div class="option-bar option-bar--zero">
+        <div class="option-bar-fill" style="width: 100%">
+          <span>Market prices $0 for semiconductor glass — effectively 0% of market cap</span>
+        </div>
+      </div>
+      <div class="option-bar option-bar--potential">
+        <div class="option-bar-fill" style="width: 65%">
+          <span>3.3%–6.5% — NPV of semiconductor glass optionality ($3.8B–$7.6B)</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 9. SUPPLY CHAIN MAP -->
+<section class="section" id="supply-chain">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-number">08</span>
+      <h2>Supply Chain Map</h2>
+      <p class="section-subtitle">Five-layer value chain — Corning's picks-and-shovels positioning</p>
+    </div>
+    <div class="supply-chain-map reveal">
+      <div class="sc-layer" data-layer="1">
+        <div class="sc-layer-label">Layer 1<br><small>Glass Material</small></div>
+        <div class="sc-companies">
+          <div class="sc-company sc-company--corning" data-tooltip="Corning: Primary glass supplier to ALL downstream players. Fusion-drawn panels at semiconductor-grade quality. EAGLE XG®, ULE® product lines. CTE tunable 3.4–12.6 ppm/°C.">
+            <strong>Corning</strong>
+            <span class="sc-tag">★ PRIMARY</span>
+          </div>
+          <div class="sc-company" data-tooltip="AGC (Asahi Glass): Most credible competitor. $354M CapEx targeting glass core substrates. SW-YY® and EN-A1 materials.">AGC</div>
+          <div class="sc-company" data-tooltip="SCHOTT: 140+ years glass expertise. AF 32®eco, BOROFLOAT®33. Strongest in niche/R&D applications. Private company.">SCHOTT</div>
+          <div class="sc-company" data-tooltip="NEG (Nippon Electric Glass): GC Core® glass-ceramic hybrid. CO₂ laser processable — unique differentiator. 515×510mm panels developed.">NEG</div>
+        </div>
+      </div>
+      <div class="sc-arrows">
+        <svg width="100%" height="30"><line x1="50%" y1="0" x2="50%" y2="30" stroke="#1B3A5C" stroke-width="2" stroke-dasharray="4"/><polygon points="0,0 6,0 3,6" fill="#1B3A5C" transform="translate(47%, 24)"/></svg>
+      </div>
+      <div class="sc-layer" data-layer="2">
+        <div class="sc-layer-label">Layer 2<br><small>TGV Equipment</small></div>
+        <div class="sc-companies">
+          <div class="sc-company" data-tooltip="LPKF Laser: LIDE (Laser Induced Deep Etching) process for Through-Glass Via formation. Key equipment supplier.">LPKF Laser</div>
+          <div class="sc-company" data-tooltip="Applied Materials: World's largest semi equipment maker. 29.9% stake in Absolics. Provides deposition and etch tools for TGV.">Applied Materials</div>
+        </div>
+      </div>
+      <div class="sc-arrows">
+        <svg width="100%" height="30"><line x1="50%" y1="0" x2="50%" y2="30" stroke="#1B3A5C" stroke-width="2" stroke-dasharray="4"/><polygon points="0,0 6,0 3,6" fill="#1B3A5C" transform="translate(47%, 24)"/></svg>
+      </div>
+      <div class="sc-layer" data-layer="3">
+        <div class="sc-layer-label">Layer 3<br><small>Substrate Mfg.</small></div>
+        <div class="sc-companies">
+          <div class="sc-company sc-company--customer" data-tooltip="Absolics (SKC): World's first dedicated glass substrate fab. Covington, GA. AMD certification nearing completion. AWS testing paused.">Absolics<br><small>(SKC)</small></div>
+          <div class="sc-company sc-company--customer" data-tooltip="Samsung SEMCO: Pilot production at Sejong. Samples to AMD, Broadcom. Sumitomo Chemical JV for glass core. Mass production target 2027.">Samsung<br>SEMCO</div>
+          <div class="sc-company sc-company--customer" data-tooltip="Intel Foundry: 600+ glass substrate patents. NEPCON Japan 2026 demo. HVM target H2 2026. Licensing technology to ecosystem.">Intel</div>
+          <div class="sc-company sc-company--customer" data-tooltip="LG Innotek: Delayed commercialization to 2030. Still in early development phase.">LG Innotek</div>
+        </div>
+      </div>
+      <div class="sc-arrows">
+        <svg width="100%" height="30"><line x1="50%" y1="0" x2="50%" y2="30" stroke="#1B3A5C" stroke-width="2" stroke-dasharray="4"/><polygon points="0,0 6,0 3,6" fill="#1B3A5C" transform="translate(47%, 24)"/></svg>
+      </div>
+      <div class="sc-layer" data-layer="4">
+        <div class="sc-layer-label">Layer 4<br><small>Packaging</small></div>
+        <div class="sc-companies">
+          <div class="sc-company" data-tooltip="TSMC CoPoS: Chip-on-Panel-on-Substrate. 310×310mm glass carriers. Pilot 2026 at VisEra. Mass production 2028–2029. Corning partnership confirmed.">TSMC<br><small>CoPoS</small></div>
+          <div class="sc-company" data-tooltip="Intel Foundry: Glass + EMIB integration. Chandler, AZ facility. HVM target H2 2026.">Intel<br>Foundry</div>
+          <div class="sc-company" data-tooltip="ASE Technology: Leading OSAT (Outsourced Semiconductor Assembly & Test). Exploring glass substrate integration.">ASE</div>
+        </div>
+      </div>
+      <div class="sc-arrows">
+        <svg width="100%" height="30"><line x1="50%" y1="0" x2="50%" y2="30" stroke="#1B3A5C" stroke-width="2" stroke-dasharray="4"/><polygon points="0,0 6,0 3,6" fill="#1B3A5C" transform="translate(47%, 24)"/></svg>
+      </div>
+      <div class="sc-layer" data-layer="5">
+        <div class="sc-layer-label">Layer 5<br><small>End Customers</small></div>
+        <div class="sc-companies">
+          <div class="sc-company" data-tooltip="NVIDIA: Rubin Ultra CoPoS first adopter. Booked 800K–850K wafers with TSMC for 2026. Vera Rubin does NOT use glass substrates.">NVIDIA</div>
+          <div class="sc-company" data-tooltip="AMD: Certifying Absolics glass substrates for MI400-series. Deep discussions with TSMC for CoPoS.">AMD</div>
+          <div class="sc-company" data-tooltip="Broadcom: Exploring CoPoS for custom AI silicon. Samsung SEMCO supplying prototypes.">Broadcom</div>
+          <div class="sc-company" data-tooltip="Amazon/AWS: Absolics testing indefinitely paused. Evaluating for Trainium AI chips. Capacity concerns.">Amazon</div>
+        </div>
+      </div>
+    </div>
+    <div class="sc-legend reveal">
+      <span class="sc-legend-item"><span class="sc-dot sc-dot--corning"></span> Corning (Primary Supplier)</span>
+      <span class="sc-legend-item"><span class="sc-dot sc-dot--customer"></span> Corning's Direct Customers</span>
+      <span class="sc-legend-item"><span class="sc-dot sc-dot--other"></span> Other Supply Chain Players</span>
+    </div>
+  </div>
+</section>
+
+<!-- 10. CATALYST TIMELINE -->
+<section class="section section--alt" id="catalysts">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-number">09</span>
+      <h2>Catalyst Timeline</h2>
+      <p class="section-subtitle">Key events from 2025 to 2028+ with confidence levels</p>
+    </div>
+    <div class="catalyst-timeline reveal">
+      <div class="cat-track">
+        <div class="cat-year-marker" style="left: 0%">2025</div>
+        <div class="cat-year-marker" style="left: 33%">2026</div>
+        <div class="cat-year-marker" style="left: 66%">2027</div>
+        <div class="cat-year-marker" style="left: 100%">2028+</div>
+        <div class="cat-line"></div>
+      </div>
+      <div class="cat-events">
+        <div class="cat-event cat-done" style="left: 8%" data-info="Absolics Covington, GA facility began phased glass substrate commercial shipments. TGV pilot line operational Dec 2025. Corning glass panel material demand activated.">
+          <div class="cat-dot"></div>
+          <div class="cat-label">
+            <strong>Absolics Ships</strong>
+            <span>Q4 2025 ✓</span>
+            <span class="cat-conf cat-conf--high">HIGH</span>
+          </div>
+        </div>
+        <div class="cat-event" style="left: 22%" data-info="AMD formal qualification/certification of Absolics glass substrate. First named customer validation. Corning as upstream material supplier benefits from increased material orders.">
+          <div class="cat-dot"></div>
+          <div class="cat-label">
+            <strong>AMD Certifies Absolics</strong>
+            <span>Q1-Q2 2026</span>
+            <span class="cat-conf cat-conf--high">HIGH</span>
+          </div>
+        </div>
+        <div class="cat-event" style="left: 33%" data-info="Samsung Electro-Mechanics pilot production at Sejong plant. Already supplying samples to AMD and Broadcom. Mass production targeted 2027. New customer demand for Corning materials (if Sumitomo JV doesn't fully supply).">
+          <div class="cat-dot"></div>
+          <div class="cat-label">
+            <strong>Samsung SEMCO Pilot</strong>
+            <span>H2 2026</span>
+            <span class="cat-conf cat-conf--med">MEDIUM</span>
+          </div>
+        </div>
+        <div class="cat-event" style="left: 44%" data-info="Corning management first quantifies semiconductor glass TAM in earnings call. This would trigger analyst coverage and initiate a valuation re-rate as consensus models begin incorporating semi glass optionality.">
+          <div class="cat-dot"></div>
+          <div class="cat-label">
+            <strong>Mgmt Quantifies Semi Glass</strong>
+            <span>2026 Earnings</span>
+            <span class="cat-conf cat-conf--med">MEDIUM</span>
+          </div>
+        </div>
+        <div class="cat-event" style="left: 60%" data-info="NVIDIA Rubin Ultra demands CoWoS-L 120×150mm panels. While Rubin doesn't use glass substrates, the massive packaging demand expands the overall advanced packaging market — indirect positive for glass adoption.">
+          <div class="cat-dot"></div>
+          <div class="cat-label">
+            <strong>Rubin Ultra Demand</strong>
+            <span>2027</span>
+            <span class="cat-conf cat-conf--high">HIGH</span>
+          </div>
+        </div>
+        <div class="cat-event cat-major" style="left: 80%" data-info="Samsung Electronics introduces glass interposers in advanced semiconductor packaging, replacing silicon interposers. The largest single demand catalyst for glass substrate materials. Samsung SEMCO targets market leadership in glass substrates.">
+          <div class="cat-dot"></div>
+          <div class="cat-label">
+            <strong>Samsung Glass Interposer</strong>
+            <span>2028</span>
+            <span class="cat-conf cat-conf--medhigh">MED-HIGH</span>
+          </div>
+        </div>
+        <div class="cat-event" style="left: 92%" data-info="NVIDIA Feynman architecture could be the first NVIDIA product to adopt glass substrates. Speculative but would be transformative if confirmed. Not confirmed — low-medium probability.">
+          <div class="cat-dot"></div>
+          <div class="cat-label">
+            <strong>NVIDIA Feynman (Glass?)</strong>
+            <span>2028+</span>
+            <span class="cat-conf cat-conf--low">LOW-MED</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="cat-detail-box" id="catDetailBox">
+      <button class="cat-close" id="catClose">&times;</button>
+      <p id="catDetailText">Click on an event to see details</p>
+    </div>
+  </div>
+</section>
+
+<!-- 11. COMPETITIVE MOAT -->
+<section class="section" id="moat">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-number">10</span>
+      <h2>Competitive Moat Assessment</h2>
+      <p class="section-subtitle">Corning vs. competitors across five key dimensions</p>
+    </div>
+    <div class="moat-layout reveal">
+      <div class="chart-card">
+        <h3>Competitive Radar — Glass Material Suppliers</h3>
+        <div class="chart-wrapper chart-wrapper--radar">
+          <canvas id="radarChart"></canvas>
+        </div>
+      </div>
+      <div class="moat-summary">
+        <div class="moat-rating">
+          <span class="moat-rating-label">Overall Moat</span>
+          <span class="moat-rating-value">STRONG</span>
+        </div>
+        <p>Corning is the only supplier with fusion-drawn panels at semiconductor-grade quality available at scale today. Its moat is strongest in glass carriers (Phase 1) where it has established qualifications and proprietary fusion process advantages.</p>
+        <div class="moat-dimensions">
+          <div class="moat-dim">
+            <span class="moat-dim-name">Process IP (Fusion Draw)</span>
+            <div class="moat-bar"><div class="moat-bar-fill" style="width: 95%"></div></div>
+          </div>
+          <div class="moat-dim">
+            <span class="moat-dim-name">Material Formulations</span>
+            <div class="moat-bar"><div class="moat-bar-fill" style="width: 90%"></div></div>
+          </div>
+          <div class="moat-dim">
+            <span class="moat-dim-name">Scale & Manufacturing</span>
+            <div class="moat-bar"><div class="moat-bar-fill" style="width: 92%"></div></div>
+          </div>
+          <div class="moat-dim">
+            <span class="moat-dim-name">Customer Lock-in</span>
+            <div class="moat-bar"><div class="moat-bar-fill" style="width: 65%"></div></div>
+          </div>
+          <div class="moat-dim">
+            <span class="moat-dim-name">Patent Position</span>
+            <div class="moat-bar"><div class="moat-bar-fill" style="width: 55%"></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 12. CORNING VS SKC RISK COMPARISON -->
+<section class="section section--alt" id="risk-comparison">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-number">11</span>
+      <h2>Corning vs. SKC Risk Profile</h2>
+      <p class="section-subtitle">Why Corning is the safer, asymmetric way to play glass substrates</p>
+    </div>
+    <div class="comparison-grid reveal">
+      <div class="comp-header comp-header--corning">Corning (GLW)</div>
+      <div class="comp-header comp-header--factor">Factor</div>
+      <div class="comp-header comp-header--skc">SKC / Absolics</div>
+
+      <div class="comp-cell comp-cell--good">Material supplier</div>
+      <div class="comp-cell comp-cell--factor">Role</div>
+      <div class="comp-cell comp-cell--bad">Substrate manufacturer</div>
+
+      <div class="comp-cell comp-cell--good">Marginal</div>
+      <div class="comp-cell comp-cell--factor">Revenue at Risk</div>
+      <div class="comp-cell comp-cell--bad">Entire company bet</div>
+
+      <div class="comp-cell comp-cell--good">None — sells raw glass</div>
+      <div class="comp-cell comp-cell--factor">Manufacturing Risk</div>
+      <div class="comp-cell comp-cell--bad">Full yield/quality risk</div>
+
+      <div class="comp-cell comp-cell--good">Investment grade</div>
+      <div class="comp-cell comp-cell--factor">Financial Health</div>
+      <div class="comp-cell comp-cell--bad">230% D/E ratio</div>
+
+      <div class="comp-cell comp-cell--good">Highly diversified</div>
+      <div class="comp-cell comp-cell--factor">Customer Concentration</div>
+      <div class="comp-cell comp-cell--bad">1–2 customers</div>
+
+      <div class="comp-cell comp-cell--good">Already profitable</div>
+      <div class="comp-cell comp-cell--factor">Break-even</div>
+      <div class="comp-cell comp-cell--bad">2027–2028 earliest</div>
+
+      <div class="comp-cell comp-cell--good">$1.6B net income</div>
+      <div class="comp-cell comp-cell--factor">FY2025 Profitability</div>
+      <div class="comp-cell comp-cell--bad">-$305B KRW loss</div>
+
+      <div class="comp-cell comp-cell--good">160+ years glass science</div>
+      <div class="comp-cell comp-cell--factor">Track Record</div>
+      <div class="comp-cell comp-cell--neutral">Founded 2021</div>
+    </div>
+    <div class="risk-gauges reveal">
+      <div class="gauge">
+        <div class="gauge-label">Corning Risk Level</div>
+        <div class="gauge-track">
+          <div class="gauge-fill gauge-fill--low" style="width: 25%"></div>
+        </div>
+        <span class="gauge-text">LOW</span>
+      </div>
+      <div class="gauge">
+        <div class="gauge-label">SKC/Absolics Risk Level</div>
+        <div class="gauge-track">
+          <div class="gauge-fill gauge-fill--high" style="width: 85%"></div>
+        </div>
+        <span class="gauge-text">VERY HIGH</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 13. RISK MATRIX -->
+<section class="section" id="risks">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-number">12</span>
+      <h2>Risk Matrix</h2>
+      <p class="section-subtitle">Key risks with severity, probability, and mitigation</p>
+    </div>
+    <div class="risk-matrix reveal">
+      <div class="risk-item" data-mitigation="Corning sells materials, not substrates. No manufacturing yield risk. Delays affect timing but not thesis direction. Bear case already absorbs 2-year delay.">
+        <div class="risk-header">
+          <span class="risk-name">Production Timeline Delay</span>
+          <div class="risk-badges">
+            <span class="risk-severity risk-severity--medhigh">MED-HIGH</span>
+            <span class="risk-prob risk-prob--med">MED PROB</span>
+          </div>
+        </div>
+        <p>Glass substrate yield/fragility issues delay mass production timelines</p>
+        <div class="risk-impact">Impact: Delays semi glass revenue contribution</div>
+      </div>
+      <div class="risk-item" data-mitigation="ABF is at its physical limit — CTE mismatch with silicon is unsolvable with organic resins. Industry consensus is that ABF patches are temporary, not permanent solutions. Even if ABF improves, glass substrate TAM comes from NEW applications that ABF cannot serve (not replacement).">
+        <div class="risk-header">
+          <span class="risk-name">ABF Technology Breakthrough</span>
+          <div class="risk-badges">
+            <span class="risk-severity risk-severity--med">MED</span>
+            <span class="risk-prob risk-prob--low">LOW PROB</span>
+          </div>
+        </div>
+        <p>Ajinomoto/Ibiden develop advanced ABF that reduces glass demand</p>
+        <div class="risk-impact">Impact: Reduces glass substrate TAM</div>
+      </div>
+      <div class="risk-item" data-mitigation="This is already confirmed for Vera Rubin (2026). The thesis doesn't depend on NVIDIA — AMD + Samsung 2028 drive sufficient demand. NVIDIA Feynman (2028) remains a potential upside catalyst.">
+        <div class="risk-header">
+          <span class="risk-name">NVIDIA Doesn't Adopt Glass</span>
+          <div class="risk-badges">
+            <span class="risk-severity risk-severity--med">MED</span>
+            <span class="risk-prob risk-prob--high">HIGH PROB (short-term)</span>
+          </div>
+        </div>
+        <p>NVIDIA Rubin/Feynman products don't use glass substrates</p>
+        <div class="risk-impact">Impact: Limited — AMD + Samsung sufficient</div>
+      </div>
+      <div class="risk-item" data-mitigation="AWS halt is a SKC/Absolics problem, not a Corning problem. AWS paused due to insufficient Absolics capacity — not a technology rejection. Corning supplies glass to multiple customers (Intel, Samsung SEMCO, LG Innotek) independent of Absolics.">
+        <div class="risk-header">
+          <span class="risk-name">AWS Suspends Absolics</span>
+          <div class="risk-badges">
+            <span class="risk-severity risk-severity--high">HIGH (for SKC)</span>
+            <span class="risk-prob risk-prob--confirmed">CONFIRMED</span>
+          </div>
+        </div>
+        <p>AWS indefinitely postponed Absolics qualification testing</p>
+        <div class="risk-impact">Impact: Minimal for Corning — diversified customer base</div>
+      </div>
+      <div class="risk-item" data-mitigation="Chinese players face fundamental quality barriers: semiconductor-grade glass requires impurity levels <1 ppb, surface roughness Ra <0.5nm, TTV <2μm. Display-grade glass doesn't meet these specs. Chinese companies target domestic AI chip customers — not Western fab supply chains. 3–5 year technology buffer.">
+        <div class="risk-header">
+          <span class="risk-name">Chinese Competition</span>
+          <div class="risk-badges">
+            <span class="risk-severity risk-severity--medlow">MED-LOW</span>
+            <span class="risk-prob risk-prob--low">LOW (near-term)</span>
+          </div>
+        </div>
+        <p>BOE, Visionox enter semiconductor glass substrates</p>
+        <div class="risk-impact">Impact: 3–5 year buffer; domestic China market only</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 14. FOOTER / SUMMARY -->
+<section class="section section--footer" id="summary">
+  <div class="container">
+    <div class="footer-content">
+      <div class="footer-main">
+        <h2>Investment Conclusion</h2>
+        <div class="footer-target">
+          <span class="footer-target-label">12-Month Target</span>
+          <span class="footer-target-price">$155 – $166</span>
+          <span class="footer-target-upside">+14% to +22% upside</span>
+        </div>
+        <div class="footer-target footer-target--long">
+          <span class="footer-target-label">2028 Full Thesis</span>
+          <span class="footer-target-price">$176+</span>
+          <span class="footer-target-upside">+29%+ upside</span>
+        </div>
+        <p class="footer-takeaway">Corning is the only glass substrate beneficiary that doesn't bear manufacturing risk. The semiconductor glass business is a free call option not reflected in the current valuation. You pay for the optical AI supercycle at a discount to pure-play peers — and get semiconductor glass for free.</p>
+      </div>
+      <div class="footer-meta">
+        <p><strong>Research Date:</strong> March 31, 2026</p>
+        <p><strong>Competition:</strong> 2026 Perplexity Stock Pitch Competition</p>
+        <p><strong>Primary Thesis:</strong> LONG Corning (GLW)</p>
+        <p class="footer-disclaimer">This research is prepared for investment pitch competition purposes only. It does not constitute investment advice. All data sourced from company filings, earnings transcripts, and third-party research reports. Past performance does not guarantee future results.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TOOLTIP -->
+<div class="tooltip" id="tooltip"></div>
+
+<script src="app.js"></script>
+</body>
+</html>
