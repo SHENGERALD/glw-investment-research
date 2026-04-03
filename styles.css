@@ -2381,9 +2381,9 @@ canvas {
   display: inline-flex;
   align-items: center;
   gap: 0.4rem;
-  background: var(--sand);
+  background: rgba(212,165,116,0.12);
   border: 1.5px solid var(--sand);
-  color: var(--navy-dark);
+  color: var(--sand);
   font-family: var(--font-heading);
   font-size: 0.78rem;
   font-weight: 800;
