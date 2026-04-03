@@ -1217,6 +1217,20 @@
 <!-- TOOLTIP -->
 <div class="tooltip" id="tooltip"></div>
 
-<script src="app.js"></script>
+<script src="app.js">
+// ── Keyboard shortcuts ──
+document.addEventListener('keydown', function(e) {
+  // Ignore if user is typing in an input
+  if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
+  if (e.metaKey || e.ctrlKey || e.altKey) return;
+
+  if (e.key === 't' || e.key === 'T') {
+    window.location.href = 'bloomberg.html';
+  }
+  if (e.key === 'p' || e.key === 'P') {
+    window.location.href = 'index.html';
+  }
+});
+</script>
 </body>
 </html>

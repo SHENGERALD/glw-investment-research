@@ -1233,6 +1233,14 @@ setTimeout(() => {
     el.style.width = el.dataset.w;
   });
 }, 300);
+
+// ── Keyboard shortcuts ──
+document.addEventListener('keydown', function(e) {
+  if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
+  if (e.metaKey || e.ctrlKey || e.altKey) return;
+  if (e.key === 'd' || e.key === 'D') window.location.href = 'dashboard.html';
+  if (e.key === 'p' || e.key === 'P') window.location.href = 'index.html';
+});
 </script>
 </body>
 </html>
