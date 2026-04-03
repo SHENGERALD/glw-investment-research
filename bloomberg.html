@@ -1,0 +1,1238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GLW — Institutional Research · Perplexity Computer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<style>
+/* ── TOKENS ── */
+:root {
+  --navy:       #1B3A5C;
+  --navy-dark:  #0F2440;
+  --navy-mid:   #142D49;
+  --navy-light: #2E5A88;
+  --navy-pale:  #1E3D60;
+  --rust:       #A84B2F;
+  --rust-light: #C17D54;
+  --rust-faint: rgba(168,75,47,0.15);
+  --sand:       #D4A574;
+  --sand-faint: rgba(212,165,116,0.12);
+  --beige:      #F7F6F2;
+  --beige-dark: #EDE9E2;
+  --white:      #FFFFFF;
+  --text:       rgba(255,255,255,0.88);
+  --muted:      rgba(255,255,255,0.45);
+  --faint:      rgba(255,255,255,0.2);
+  --border:     rgba(255,255,255,0.08);
+  --border-mid: rgba(255,255,255,0.13);
+  --mono:       'JetBrains Mono', 'Consolas', monospace;
+  --sans:       'Inter', sans-serif;
+  --ease:       cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+*,*::before,*::after { box-sizing:border-box; margin:0; padding:0; }
+html { font-size: 14.5px; }
+body {
+  font-family: var(--sans);
+  background: var(--navy-dark);
+  color: var(--text);
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* ── TOP KPI BAR ── */
+.kpi-bar {
+  position: sticky;
+  top: 0; z-index: 100;
+  display: flex;
+  align-items: center;
+  height: 36px;
+  background: rgba(7,18,32,0.97);
+  border-bottom: 1px solid var(--border);
+  padding: 0 1rem;
+  gap: 0;
+  overflow: hidden;
+  backdrop-filter: blur(8px);
+}
+.kb-brand {
+  font-family: var(--mono);
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--white);
+  letter-spacing: 0.08em;
+  padding-right: 1rem;
+  border-right: 1px solid var(--border-mid);
+  margin-right: 0.6rem;
+  white-space: nowrap;
+}
+.kb-exchange {
+  font-family: var(--mono);
+  font-size: 0.65rem;
+  color: var(--muted);
+  background: rgba(255,255,255,0.06);
+  border-radius: 3px;
+  padding: 0.15em 0.5em;
+  margin-right: 1rem;
+  letter-spacing: 0.06em;
+}
+.kb-items {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  flex: 1;
+  overflow: hidden;
+}
+.kb-item {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0 1rem;
+  border-right: 1px solid var(--border);
+  white-space: nowrap;
+  font-size: 0.72rem;
+}
+.kb-label {
+  font-family: var(--mono);
+  color: var(--muted);
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+.kb-val {
+  font-family: var(--mono);
+  font-weight: 700;
+  color: var(--white);
+  font-variant-numeric: tabular-nums;
+  font-size: 0.82rem;
+}
+.kb-delta {
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  font-weight: 600;
+}
+.up { color: var(--sand); }
+.dn { color: var(--rust-light); }
+.kb-right {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin-left: auto;
+  padding-left: 1rem;
+}
+.kb-rating {
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  font-weight: 700;
+  color: var(--sand);
+  letter-spacing: 0.1em;
+  border: 1px solid rgba(212,165,116,0.35);
+  padding: 0.2em 0.6em;
+  border-radius: 4px;
+  background: rgba(212,165,116,0.08);
+}
+.kb-date {
+  font-family: var(--mono);
+  font-size: 0.63rem;
+  color: var(--muted);
+  white-space: nowrap;
+}
+
+/* ── LAYOUT ── */
+.main-layout {
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  min-height: calc(100vh - 36px);
+  align-items: start;
+}
+
+/* ── LEFT SIDEBAR ── */
+.sidebar {
+  grid-row: 1 / -1;
+  border-right: 1px solid var(--border);
+  background: rgba(10,23,42,0.6);
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  position: sticky;
+  top: 36px;
+  max-height: calc(100vh - 36px);
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255,255,255,0.1) transparent;
+}
+
+.sb-section {
+  border-bottom: 1px solid var(--border);
+  padding: 0.75rem;
+}
+.sb-title {
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--muted);
+  margin-bottom: 0.6rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.sb-ticker-tag {
+  font-size: 0.58rem;
+  background: var(--rust-faint);
+  color: var(--rust-light);
+  border: 1px solid rgba(168,75,47,0.3);
+  border-radius: 3px;
+  padding: 0.1em 0.4em;
+}
+
+/* Thesis pillars */
+.thesis-pillar {
+  margin-bottom: 0.65rem;
+  padding-bottom: 0.65rem;
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+}
+.thesis-pillar:last-child { border-bottom: none; margin-bottom: 0; }
+.tp-num {
+  font-family: var(--mono);
+  font-size: 0.68rem;
+  color: var(--rust-light);
+  margin-bottom: 0.2rem;
+}
+.tp-title {
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: var(--white);
+  margin-bottom: 0.2rem;
+  line-height: 1.3;
+}
+.tp-body {
+  font-size: 0.76rem;
+  color: var(--muted);
+  line-height: 1.5;
+}
+.tp-stat {
+  font-family: var(--mono);
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--sand);
+  margin-bottom: 0.15rem;
+}
+
+/* Consensus */
+.consensus-bar {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin-bottom: 0.3rem;
+}
+.cb-pct {
+  font-family: var(--mono);
+  font-size: 0.85rem;
+  font-weight: 700;
+  width: 32px;
+  color: var(--white);
+}
+.cb-label { font-size: 0.75rem; color: var(--muted); flex: 1; }
+.cb-track {
+  height: 4px;
+  flex: 2;
+  background: rgba(255,255,255,0.07);
+  border-radius: 2px;
+  overflow: hidden;
+}
+.cb-fill {
+  height: 100%;
+  border-radius: 2px;
+  background: var(--navy-light);
+}
+.cb-fill.buy   { background: var(--sand); }
+.cb-fill.hold  { background: rgba(255,255,255,0.25); }
+.cb-fill.sell  { background: var(--rust); }
+
+.consensus-target {
+  margin-top: 0.5rem;
+  padding: 0.45rem;
+  background: var(--sand-faint);
+  border: 1px solid rgba(212,165,116,0.2);
+  border-radius: 6px;
+  font-family: var(--mono);
+  font-size: 0.65rem;
+  color: var(--muted);
+}
+.ct-val {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--sand);
+  display: block;
+  margin-bottom: 0.1rem;
+}
+
+/* Recent upgrades */
+.upgrade-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.4rem;
+  font-size: 0.75rem;
+}
+.ui-firm { color: var(--text); font-weight: 600; }
+.ui-date { color: var(--muted); font-family: var(--mono); }
+.ui-action {
+  font-family: var(--mono);
+  font-size: 0.6rem;
+  font-weight: 600;
+  padding: 0.15em 0.45em;
+  border-radius: 3px;
+}
+.overweight { background: rgba(212,165,116,0.15); color: var(--sand); }
+.outperform { background: rgba(46,90,136,0.3); color: #7EB3E8; }
+.buy-tag    { background: rgba(212,165,116,0.12); color: var(--sand); }
+
+/* ── MAIN CONTENT ── */
+.main-content {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+/* Alpha vs Consensus section */
+.alpha-section {
+  border-bottom: 1px solid var(--border);
+  padding: 0.75rem 1rem;
+  display: grid;
+  grid-template-columns: 1fr 220px;
+  gap: 1rem;
+  min-height: 280px;
+}
+
+.alpha-label {
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--muted);
+  margin-bottom: 0.4rem;
+}
+.alpha-headline {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--white);
+  margin-bottom: 0.15rem;
+}
+.alpha-sub {
+  font-size: 0.78rem;
+  color: var(--muted);
+  margin-bottom: 0.6rem;
+}
+
+.chart-legend {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 0.5rem;
+  font-size: 0.65rem;
+}
+.legend-dot {
+  width: 7px; height: 7px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+.chart-container-main {
+  flex: 1;
+  position: relative;
+  min-height: 170px;
+}
+
+/* Alpha view panel */
+.alpha-panel {
+  background: rgba(255,255,255,0.03);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 0.75rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+.ap-title {
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--muted);
+  margin-bottom: 0.6rem;
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 0.4rem;
+}
+.ap-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.35rem 0;
+  border-bottom: 1px solid rgba(255,255,255,0.04);
+  font-size: 0.82rem;
+}
+.ap-row:last-child { border-bottom: none; }
+.ap-key { color: var(--muted); }
+.ap-val {
+  font-family: var(--mono);
+  font-weight: 600;
+  color: var(--white);
+  font-variant-numeric: tabular-nums;
+}
+.ap-val.highlight { color: var(--sand); font-size: 1.0rem; }
+.ap-val.rust { color: var(--rust-light); }
+
+.alpha-quote {
+  margin-top: 0.5rem;
+  background: rgba(27,58,92,0.5);
+  border-left: 2px solid var(--navy-light);
+  padding: 0.5rem 0.6rem;
+  border-radius: 0 4px 4px 0;
+  font-size: 0.75rem;
+  color: var(--muted);
+  line-height: 1.55;
+  font-style: italic;
+}
+
+/* ── MIDDLE ROW: Comp table + Valuation Bridge ── */
+.mid-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  border-bottom: 1px solid var(--border);
+  min-height: 280px;
+}
+
+.panel {
+  padding: 0.75rem 1rem;
+  border-right: 1px solid var(--border);
+  min-width: 0;
+  overflow: hidden;
+}
+.panel:last-child { border-right: none; }
+
+.panel-title {
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--muted);
+  margin-bottom: 0.15rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.panel-headline {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--white);
+  margin-bottom: 0.5rem;
+}
+.panel-sub {
+  font-size: 0.75rem;
+  color: var(--muted);
+  margin-bottom: 0.65rem;
+}
+
+/* Comp table */
+.comp-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.78rem;
+  table-layout: fixed;
+}
+.comp-table th {
+  font-family: var(--mono);
+  font-size: 0.68rem;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  color: var(--muted);
+  font-weight: 500;
+  padding: 0.3rem 0.4rem;
+  text-align: right;
+  border-bottom: 1px solid var(--border-mid);
+}
+.comp-table th:first-child { text-align: left; }
+.comp-table th:nth-child(1) { width: 35%; }
+.comp-table th:nth-child(2) { width: 14%; }
+.comp-table th:nth-child(3) { width: 12%; }
+.comp-table th:nth-child(4) { width: 13%; }
+.comp-table th:nth-child(5) { width: 26%; }
+.comp-table td {
+  padding: 0.4rem 0.4rem;
+  text-align: right;
+  font-family: var(--mono);
+  font-variant-numeric: tabular-nums;
+  border-bottom: 1px solid rgba(255,255,255,0.04);
+  color: var(--muted);
+  font-size: 0.78rem;
+}
+.comp-table td:first-child { text-align: left; font-family: var(--sans); color: var(--text); font-weight: 500; }
+.comp-table tr.glw-row td { color: var(--white); background: rgba(212,165,116,0.06); }
+.comp-table tr.glw-row td:first-child { color: var(--sand); font-weight: 700; }
+.mult-tag {
+  display: inline-block;
+  background: rgba(168,75,47,0.15);
+  color: var(--rust-light);
+  border-radius: 3px;
+  padding: 0 0.3em;
+  font-size: 0.6rem;
+}
+.mult-tag.discount {
+  background: rgba(212,165,116,0.15);
+  color: var(--sand);
+}
+
+/* Valuation Bridge */
+.bridge-rows { margin-top: 0.5rem; }
+.bridge-row {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+.br-label {
+  font-size: 0.75rem;
+  color: var(--muted);
+  width: 80px;
+  flex-shrink: 0;
+  text-align: right;
+}
+.br-track {
+  flex: 1;
+  height: 14px;
+  background: rgba(255,255,255,0.06);
+  border-radius: 3px;
+  overflow: hidden;
+  position: relative;
+}
+.br-fill {
+  height: 100%;
+  border-radius: 3px;
+  transition: width 1s var(--ease);
+}
+.br-val {
+  font-family: var(--mono);
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--white);
+  width: 56px;
+  flex-shrink: 0;
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+.br-fill.current  { background: var(--navy-light); }
+.br-fill.optical  { background: var(--sand); }
+.br-fill.semiglass{ background: var(--rust-light); }
+.br-fill.margin   { background: rgba(74,127,181,0.7); }
+.br-fill.target   { background: linear-gradient(90deg, var(--sand), var(--rust-light)); }
+
+/* Valuation multiples */
+.val-multiples {
+  margin-top: 0.75rem;
+  border-top: 1px solid var(--border);
+  padding-top: 0.6rem;
+}
+.vm-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.25rem;
+  font-size: 0.68rem;
+}
+.vm-label { color: var(--muted); font-size: 0.75rem; }
+.vm-range { font-family: var(--mono); color: var(--muted); font-size: 0.72rem; }
+.vm-val   { font-family: var(--mono); font-weight: 700; color: var(--white); font-variant-numeric: tabular-nums; font-size: 0.82rem; }
+.vm-val.target-val { color: var(--sand); font-size: 0.95rem; }
+
+/* ── BOTTOM ROW: Risk Matrix + Operating Leverage ── */
+.bottom-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  min-height: 260px;
+}
+
+/* Risk matrix */
+.risk-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.65rem;
+  margin-top: 0.5rem;
+}
+.risk-table {
+  table-layout: fixed;
+}
+.risk-table th {
+  font-family: var(--mono);
+  font-size: 0.68rem;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  color: var(--muted);
+  font-weight: 500;
+  padding: 0.3rem 0.5rem;
+  text-align: left;
+  border-bottom: 1px solid var(--border-mid);
+}
+.risk-table th:nth-child(1) { width: 22%; }
+.risk-table th:nth-child(2) { width: 33%; }
+.risk-table th:nth-child(3) { width: 45%; }
+.risk-table td {
+  padding: 0.5rem 0.5rem;
+  vertical-align: top;
+  border-bottom: 1px solid rgba(255,255,255,0.04);
+  color: var(--muted);
+  line-height: 1.55;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  font-size: 0.76rem;
+}
+.risk-tag {
+  display: inline-block;
+  font-family: var(--mono);
+  font-size: 0.58rem;
+  font-weight: 700;
+  padding: 0.15em 0.45em;
+  border-radius: 3px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 0.2rem;
+}
+.r-valuation { background: rgba(168,75,47,0.18); color: var(--rust-light); }
+.r-execution { background: rgba(74,127,181,0.18); color: #7EB3E8; }
+.r-semiglass { background: rgba(212,165,116,0.15); color: var(--sand); }
+.r-macro     { background: rgba(255,255,255,0.08); color: var(--muted); }
+
+/* Operating Leverage chart */
+.chart-container-sm {
+  position: relative;
+  height: 155px;
+  margin-top: 0.5rem;
+}
+
+/* ── BACK LINK ── */
+.back-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.9rem 1.5rem;
+  border-top: 1px solid var(--border-mid);
+  background: rgba(5,14,28,0.95);
+  flex-wrap: wrap;
+}
+.back-bar-left {
+  display: flex; align-items: center; gap: 0.8rem;
+}
+.back-bar-right {
+  display: flex; align-items: center; gap: 0.8rem;
+}
+.bb-btn {
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  font-family: var(--mono); font-size: 0.78rem; font-weight: 600;
+  padding: 0.55rem 1.2rem;
+  border-radius: 8px;
+  text-decoration: none;
+  cursor: pointer; border: none;
+  transition: background 160ms, transform 160ms, box-shadow 160ms;
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+}
+.bb-btn:active { transform: translateY(1px); }
+.bb-btn-primary {
+  background: var(--sand);
+  color: var(--navy-dark);
+}
+.bb-btn-primary:hover {
+  background: #e0b888;
+  box-shadow: 0 4px 16px rgba(212,165,116,0.3);
+  transform: translateY(-1px);
+}
+.bb-btn-secondary {
+  background: rgba(255,255,255,0.07);
+  color: rgba(255,255,255,0.75);
+  border: 1px solid rgba(255,255,255,0.12);
+}
+.bb-btn-secondary:hover {
+  background: rgba(255,255,255,0.12);
+  color: var(--white);
+  transform: translateY(-1px);
+}
+.back-bar-credit {
+  font-family: var(--mono);
+  font-size: 0.65rem;
+  color: rgba(255,255,255,0.22);
+  letter-spacing: 0.04em;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .main-layout { grid-template-columns: 1fr; }
+  .sidebar { grid-row: auto; border-right: none; border-bottom: 1px solid var(--border); }
+  .mid-row, .bottom-row { grid-template-columns: 1fr; }
+  .alpha-section { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<!-- KPI BAR -->
+<div class="kpi-bar">
+  <span class="kb-brand">GLW</span>
+  <span class="kb-exchange">NYSE</span>
+  <div class="kb-items">
+    <div class="kb-item">
+      <span class="kb-label">Price</span>
+      <span class="kb-val">$146.72</span>
+      <span class="kb-delta up">▲ +0.73%</span>
+    </div>
+    <div class="kb-item">
+      <span class="kb-label">Target</span>
+      <span class="kb-val up">$155–$166</span>
+    </div>
+    <div class="kb-item">
+      <span class="kb-label">Upside</span>
+      <span class="kb-val up">+9.7%</span>
+    </div>
+    <div class="kb-item">
+      <span class="kb-label">EV/EBITDA</span>
+      <span class="kb-val">22.5×</span>
+      <span class="kb-delta dn">vs peer 80×</span>
+    </div>
+    <div class="kb-item">
+      <span class="kb-label">Revenue LTM</span>
+      <span class="kb-val">$15.6B</span>
+      <span class="kb-delta up">+19% YoY</span>
+    </div>
+    <div class="kb-item">
+      <span class="kb-label">EBITDA Margin</span>
+      <span class="kb-val">23.2%</span>
+      <span class="kb-delta up">Inflect.</span>
+    </div>
+    <div class="kb-item">
+      <span class="kb-label">Optical YoY</span>
+      <span class="kb-val up">+35%</span>
+    </div>
+    <div class="kb-item">
+      <span class="kb-label">FY27E EPS</span>
+      <span class="kb-val">$6.44</span>
+    </div>
+  </div>
+  <div class="kb-right">
+    <span class="kb-rating">LONG</span>
+    <span class="kb-date">APR 2, 2026</span>
+  </div>
+</div>
+
+<!-- MAIN LAYOUT -->
+<div class="main-layout">
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+
+    <!-- Thesis Pillars -->
+    <div class="sb-section">
+      <div class="sb-title">
+        THESIS PILLARS
+        <span class="sb-ticker-tag">GLW</span>
+      </div>
+
+      <div class="thesis-pillar">
+        <div class="tp-num">01</div>
+        <div class="tp-stat">+35% YoY · $6.27B</div>
+        <div class="tp-title">AI Optical Supercycle</div>
+        <div class="tp-body">Meta $6B contracted deal, largest in GLW history. Enterprise +61% YoY. BofA: $10.3B scale-out by 2030. Structural demand, not cyclical.</div>
+      </div>
+
+      <div class="thesis-pillar">
+        <div class="tp-num">02</div>
+        <div class="tp-stat">$0 Priced In → Worth $4–$9/sh</div>
+        <div class="tp-title">Semi Glass Free Call Option</div>
+        <div class="tp-body">0 analyst mentions in 4 earnings calls. Replacing organic ABF with glass in AI chip packaging. CEO: "Doubling semi business by end of decade." NPV base: $3.8B ($4.4/sh).</div>
+      </div>
+
+      <div class="thesis-pillar">
+        <div class="tp-num">03</div>
+        <div class="tp-stat">$11B Target · 20% Margin Hit</div>
+        <div class="tp-title">Springboard Execution</div>
+        <div class="tp-body">Plan upgraded $8B→$11B. 20% operating margin target achieved 1 year early (Q4 2025: 20.2%). Meta deal contracted. 3/3 milestones on or ahead of schedule.</div>
+      </div>
+    </div>
+
+    <!-- Consensus -->
+    <div class="sb-section">
+      <div class="sb-title">CONSENSUS</div>
+      <div class="consensus-bar">
+        <span class="cb-pct">78%</span>
+        <span class="cb-label">Buy</span>
+        <div class="cb-track"><div class="cb-fill buy" style="width:78%"></div></div>
+      </div>
+      <div class="consensus-bar">
+        <span class="cb-pct">22%</span>
+        <span class="cb-label">Hold</span>
+        <div class="cb-track"><div class="cb-fill hold" style="width:22%"></div></div>
+      </div>
+      <div class="consensus-bar">
+        <span class="cb-pct">0%</span>
+        <span class="cb-label">Sell</span>
+        <div class="cb-track"><div class="cb-fill sell" style="width:0%"></div></div>
+      </div>
+      <div class="consensus-target">
+        <span class="ct-val">$155</span>
+        Median PT — 9 analysts
+      </div>
+    </div>
+
+    <!-- Recent Upgrades -->
+    <div class="sb-section">
+      <div class="sb-title">RECENT UPGRADES</div>
+      <div class="upgrade-item">
+        <span class="ui-firm">BofA</span>
+        <span class="ui-date">Mar 26</span>
+        <span class="ui-action overweight">OW $155</span>
+      </div>
+      <div class="upgrade-item">
+        <span class="ui-firm">Citi</span>
+        <span class="ui-date">Mar 20</span>
+        <span class="ui-action buy-tag">Buy $170</span>
+      </div>
+      <div class="upgrade-item">
+        <span class="ui-firm">UBS</span>
+        <span class="ui-date">Mar 15</span>
+        <span class="ui-action outperform">OP $160</span>
+      </div>
+      <div class="upgrade-item">
+        <span class="ui-firm">JPMorgan</span>
+        <span class="ui-date">Feb 28</span>
+        <span class="ui-action" style="background:rgba(255,255,255,0.08);color:var(--muted)">Neutral $115</span>
+      </div>
+    </div>
+
+    <!-- Back link -->
+    <div style="padding:0.75rem;margin-top:auto;border-top:1px solid var(--border);display:flex;flex-direction:column;gap:0.4rem;">
+      <a href="index.html" style="font-family:var(--mono);font-size:0.72rem;font-weight:600;color:var(--sand);text-decoration:none;background:rgba(212,165,116,0.1);border:1px solid rgba(212,165,116,0.25);border-radius:6px;padding:0.45rem 0.6rem;display:flex;align-items:center;justify-content:center;gap:0.4rem;transition:background 150ms;">
+        Open Dashboard →
+      </a>
+      <a href="portal.html" style="font-family:var(--mono);font-size:0.65rem;color:var(--muted);text-decoration:none;text-align:center;transition:color 150ms;">
+        ← Back to Portal
+      </a>
+    </div>
+
+  </aside>
+
+  <!-- MAIN CONTENT -->
+  <div class="main-content">
+
+    <!-- ALPHA VS CONSENSUS: EPS Projection -->
+    <div class="alpha-section">
+      <div style="display:flex;flex-direction:column;">
+        <div class="alpha-label">VARIANT PERCEPTION: SEMI GLASS MISPRICING</div>
+        <div class="alpha-headline">Scenario: Conglomerate Discount Unwinding + Glass Optionality (31% Alpha)</div>
+        <div class="alpha-sub">FY27E EPS PROJECTION ($)</div>
+
+        <div class="chart-legend">
+          <div style="display:flex;align-items:center;gap:0.35rem;">
+            <div class="legend-dot" style="background:var(--sand)"></div>
+            <span style="font-size:0.63rem;color:var(--muted);">Our Alpha (semi glass priced)</span>
+          </div>
+          <div style="display:flex;align-items:center;gap:0.35rem;">
+            <div class="legend-dot" style="background:rgba(255,255,255,0.3);border:1px solid rgba(255,255,255,0.2)"></div>
+            <span style="font-size:0.63rem;color:var(--muted);">Consensus (zero semi glass value)</span>
+          </div>
+        </div>
+
+        <div class="chart-container-main">
+          <canvas id="epsChart"></canvas>
+        </div>
+      </div>
+
+      <div class="alpha-panel">
+        <div class="ap-title">OUR ALPHA VIEW</div>
+        <div class="ap-row">
+          <span class="ap-key">EV/EBITDA Discount</span>
+          <span class="ap-val highlight">70%</span>
+        </div>
+        <div class="ap-row">
+          <span class="ap-key">FY26E EPS</span>
+          <span class="ap-val">$5.09</span>
+        </div>
+        <div class="ap-row">
+          <span class="ap-key">FY27E EPS</span>
+          <span class="ap-val">$6.44</span>
+        </div>
+        <div class="ap-row">
+          <span class="ap-key">FY28E EPS</span>
+          <span class="ap-val">$7.50</span>
+        </div>
+        <div class="ap-row">
+          <span class="ap-key">Semi Glass NPV</span>
+          <span class="ap-val up">+$4.4–$8.9/sh</span>
+        </div>
+        <div class="ap-row">
+          <span class="ap-key">Delta vs Consensus</span>
+          <span class="ap-val up">+$9.7–$19.3</span>
+        </div>
+        <div class="alpha-quote">
+          "We have zero analysts modeling glass substrates. That's not risk — it's opportunity. Every analyst missing a $4–$9/share asset is writing at consensus, not alpha."
+        </div>
+      </div>
+    </div>
+
+    <!-- MIDDLE ROW -->
+    <div class="mid-row">
+
+      <!-- COMP TABLE: Legacy vs Optical Peers -->
+      <div class="panel">
+        <div class="panel-title">
+          OPTICAL PEERS: STRUCTURAL DISCOUNT
+          <span style="font-family:var(--mono);font-size:0.58rem;background:rgba(168,75,47,0.15);color:var(--rust-light);border-radius:3px;padding:0.1em 0.45em;">▼ 70% DISCOUNT</span>
+        </div>
+        <div class="panel-headline">GLW at 22.5× vs. Pure-Plays at 80–109×</div>
+        <div class="panel-sub">Conglomerate discount captures the opportunity — not the risk.</div>
+
+        <table class="comp-table">
+          <thead>
+            <tr>
+              <th>Company</th>
+              <th>EV/EBITDA</th>
+              <th>Fwd</th>
+              <th>Margin</th>
+              <th>vs GLW</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="glw-row">
+              <td>Corning (GLW) ★</td>
+              <td>22.5×</td>
+              <td>22.1×</td>
+              <td>23.2%</td>
+              <td><span class="mult-tag discount">—</span></td>
+            </tr>
+            <tr>
+              <td>Ciena (CIEN)</td>
+              <td>80.0×</td>
+              <td>38.0×</td>
+              <td>7.1%</td>
+              <td><span class="mult-tag">+57.5×</span></td>
+            </tr>
+            <tr>
+              <td>Lumentum (LITE)</td>
+              <td>108.7×</td>
+              <td>32.7×</td>
+              <td>4.7%</td>
+              <td><span class="mult-tag">+86.2×</span></td>
+            </tr>
+            <tr>
+              <td>Coherent (COHR)</td>
+              <td>23.1×</td>
+              <td>21.5×</td>
+              <td>14.5%</td>
+              <td><span class="mult-tag">+0.6×</span></td>
+            </tr>
+            <tr>
+              <td>Amphenol (APH)</td>
+              <td>24.9×</td>
+              <td>15.0×</td>
+              <td>29.4%</td>
+              <td><span class="mult-tag">+2.4×</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- VALUATION BRIDGE -->
+      <div class="panel">
+        <div class="panel-title">VALUATION BRIDGE</div>
+        <div class="panel-headline">$146.72 → $166 (+13%)</div>
+        <div class="panel-sub">Decomposed upside by thesis driver.</div>
+
+        <div class="bridge-rows" id="bridgeRows">
+          <div class="bridge-row">
+            <span class="br-label">Current</span>
+            <div class="br-track"><div class="br-fill current" style="width:0%" data-w="66%"></div></div>
+            <span class="br-val">$146.72</span>
+          </div>
+          <div class="bridge-row">
+            <span class="br-label">P/E Re-rate</span>
+            <div class="br-track"><div class="br-fill optical" style="width:0%" data-w="72%"></div></div>
+            <span class="br-val">+$8–14</span>
+          </div>
+          <div class="bridge-row">
+            <span class="br-label">Semi Glass</span>
+            <div class="br-track"><div class="br-fill semiglass" style="width:0%" data-w="20%"></div></div>
+            <span class="br-val">+$4–9</span>
+          </div>
+          <div class="bridge-row">
+            <span class="br-label">Margin Exp.</span>
+            <div class="br-track"><div class="br-fill margin" style="width:0%" data-w="16%"></div></div>
+            <span class="br-val">+$3–5</span>
+          </div>
+          <div class="bridge-row">
+            <span class="br-label" style="color:var(--sand);font-weight:600;">Target</span>
+            <div class="br-track"><div class="br-fill target" style="width:0%" data-w="100%"></div></div>
+            <span class="br-val" style="color:var(--sand);">$155–166</span>
+          </div>
+        </div>
+
+        <div class="val-multiples">
+          <div class="vm-row">
+            <span class="vm-label">NTM EV/EBITDA</span>
+            <span class="vm-range">22.5× current</span>
+            <span class="vm-val">→ 25×</span>
+          </div>
+          <div class="vm-row">
+            <span class="vm-label">FWD P/E</span>
+            <span class="vm-range">22.8× at $146.72</span>
+            <span class="vm-val">→ 25–26×</span>
+          </div>
+          <div class="vm-row">
+            <span class="vm-label">BLENDED</span>
+            <span class="vm-range">12-month target</span>
+            <span class="vm-val target-val">$155–$166</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- BOTTOM ROW -->
+    <div class="bottom-row">
+
+      <!-- RISK MATRIX -->
+      <div class="panel">
+        <div class="panel-title">RISK-TO-MITIGANT MATRIX · 4 VECTORS BOUNDED</div>
+        <table class="risk-table">
+          <thead>
+            <tr>
+              <th>Risk</th>
+              <th>Impact</th>
+              <th>Mitigant</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <div class="risk-tag r-valuation">Valuation</div><br>
+                ~22× EV/Rev vs. 11× peer avg
+              </td>
+              <td>Multiple compression if optical growth decelerates</td>
+              <td>Rule of 50+ at $5B scale; 23% margins at 15.5× fwd rev. DCF floor $69.50 limits downside.</td>
+            </tr>
+            <tr>
+              <td>
+                <div class="risk-tag r-semiglass">Semi Glass</div><br>
+                Timeline delay to 2027+
+              </td>
+              <td>Sells materials only — no yield risk. Timing delays don't change TAM.</td>
+              <td>Sells glass panels, not substrates. Absolics/SKC bear yield execution risk. GLW is infrastructure.</td>
+            </tr>
+            <tr>
+              <td>
+                <div class="risk-tag r-execution">Execution</div><br>
+                Optical multiple compression
+              </td>
+              <td>43× vs. CIEN 80× — already discounted vs. peers</td>
+              <td>Meta $6B contract = revenue floor. 3/3 Springboard milestones delivered. Management credibility established.</td>
+            </tr>
+            <tr>
+              <td>
+                <div class="risk-tag r-macro">Macro</div><br>
+                AI capex cycle slowdown
+              </td>
+              <td>$6B Meta contract = revenue floor. Hyperscaler diversification limits concentration risk.</td>
+              <td>Microsoft, Google, Amazon, Meta all contracted. 5-year visibility on fiber demand.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- OPERATING LEVERAGE CHART -->
+      <div class="panel">
+        <div class="panel-title">OPERATING LEVERAGE: SCALING TOWARD $11B SPRINGBOARD</div>
+        <div class="panel-headline">Revenue × EBITDA Margin Expansion</div>
+        <div class="panel-sub">Optical scale driving margin inflection — target 28–30% EBITDA by FY2027E</div>
+        <div class="chart-container-sm">
+          <canvas id="opLevChart"></canvas>
+        </div>
+        <div style="display:flex;gap:1.2rem;margin-top:0.4rem;font-size:0.63rem;">
+          <div style="display:flex;align-items:center;gap:0.3rem;">
+            <div style="width:10px;height:3px;background:var(--sand);border-radius:2px;"></div>
+            <span style="color:var(--muted)">EBITDA Margin (%)</span>
+          </div>
+          <div style="display:flex;align-items:center;gap:0.3rem;">
+            <div style="width:10px;height:3px;background:rgba(74,127,181,0.7);border-radius:2px;"></div>
+            <span style="color:var(--muted)">Revenue ($B)</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- BACK BAR -->
+    <div class="back-bar">
+      <div class="back-bar-left">
+        <a href="portal.html" class="bb-btn bb-btn-secondary">← Portal</a>
+        <a href="index.html" class="bb-btn bb-btn-primary">
+          Open Full Dashboard →
+        </a>
+      </div>
+      <div class="back-bar-right">
+        <span class="back-bar-credit">Built with Perplexity Computer · 2026 Stock Pitch</span>
+      </div>
+    </div>
+
+  </div><!-- end main-content -->
+</div><!-- end main-layout -->
+
+<script>
+// ── CHART: EPS Projection (Our Alpha vs Consensus) ──
+const epsCtx = document.getElementById('epsChart').getContext('2d');
+new Chart(epsCtx, {
+  type: 'line',
+  data: {
+    labels: ['FY24A', 'FY25A', 'FY26E', 'FY27E', 'FY28E'],
+    datasets: [
+      {
+        label: 'Our Alpha',
+        data: [0.92, 1.86, 5.09, 6.44, 7.50],
+        borderColor: '#D4A574',
+        backgroundColor: 'rgba(212,165,116,0.08)',
+        fill: true,
+        tension: 0.4,
+        borderWidth: 2,
+        pointBackgroundColor: '#D4A574',
+        pointRadius: 3,
+        pointHoverRadius: 5,
+      },
+      {
+        label: 'Consensus',
+        data: [0.92, 1.86, 4.85, 6.10, 7.10],
+        borderColor: 'rgba(255,255,255,0.3)',
+        borderDash: [4,3],
+        backgroundColor: 'transparent',
+        tension: 0.4,
+        borderWidth: 1.5,
+        pointBackgroundColor: 'rgba(255,255,255,0.3)',
+        pointRadius: 2,
+        pointHoverRadius: 4,
+      }
+    ]
+  },
+  options: {
+    responsive: true,
+    maintainAspectRatio: false,
+    animation: { duration: 1000, easing: 'easeOutQuart' },
+    plugins: {
+      legend: { display: false },
+      tooltip: {
+        backgroundColor: 'rgba(7,18,32,0.95)',
+        borderColor: 'rgba(255,255,255,0.1)',
+        borderWidth: 1,
+        titleColor: 'rgba(255,255,255,0.6)',
+        bodyColor: '#fff',
+        padding: 10,
+        titleFont: { family: "'JetBrains Mono', monospace", size: 10 },
+        bodyFont: { family: "'JetBrains Mono', monospace", size: 11 },
+        callbacks: {
+          label: ctx => ` ${ctx.dataset.label}: $${ctx.raw.toFixed(2)}`
+        }
+      }
+    },
+    scales: {
+      x: {
+        grid: { color: 'rgba(255,255,255,0.04)', drawBorder: false },
+        ticks: {
+          color: 'rgba(255,255,255,0.35)',
+          font: { family: "'JetBrains Mono', monospace", size: 9 }
+        }
+      },
+      y: {
+        grid: { color: 'rgba(255,255,255,0.04)', drawBorder: false },
+        ticks: {
+          color: 'rgba(255,255,255,0.35)',
+          font: { family: "'JetBrains Mono', monospace", size: 9 },
+          callback: v => '$' + v.toFixed(2)
+        }
+      }
+    }
+  }
+});
+
+// ── CHART: Operating Leverage ──
+const opCtx = document.getElementById('opLevChart').getContext('2d');
+new Chart(opCtx, {
+  type: 'line',
+  data: {
+    labels: ['FY22A', 'FY23A', 'FY24A', 'FY25A', 'FY26E', 'FY27E', 'FY28E'],
+    datasets: [
+      {
+        label: 'EBITDA Margin',
+        data: [16.2, 14.8, 16.1, 23.2, 27.6, 29.2, 30.5],
+        borderColor: '#D4A574',
+        backgroundColor: 'rgba(212,165,116,0.06)',
+        fill: true,
+        tension: 0.4,
+        borderWidth: 2,
+        pointRadius: 2.5,
+        pointBackgroundColor: '#D4A574',
+        yAxisID: 'yMargin',
+      },
+      {
+        label: 'Revenue ($B)',
+        data: [14.2, 12.6, 13.1, 15.6, 18.8, 21.4, 23.9],
+        borderColor: 'rgba(74,127,181,0.8)',
+        backgroundColor: 'transparent',
+        borderDash: [3,2],
+        tension: 0.4,
+        borderWidth: 1.5,
+        pointRadius: 2,
+        pointBackgroundColor: 'rgba(74,127,181,0.8)',
+        yAxisID: 'yRevenue',
+      }
+    ]
+  },
+  options: {
+    responsive: true,
+    maintainAspectRatio: false,
+    animation: { duration: 1000, easing: 'easeOutQuart' },
+    plugins: {
+      legend: { display: false },
+      tooltip: {
+        backgroundColor: 'rgba(7,18,32,0.95)',
+        borderColor: 'rgba(255,255,255,0.1)',
+        borderWidth: 1,
+        padding: 8,
+        titleFont: { family: "'JetBrains Mono', monospace", size: 10 },
+        bodyFont: { family: "'JetBrains Mono', monospace", size: 10 },
+        titleColor: 'rgba(255,255,255,0.5)',
+        bodyColor: '#fff',
+      }
+    },
+    scales: {
+      x: {
+        grid: { color: 'rgba(255,255,255,0.04)', drawBorder: false },
+        ticks: { color: 'rgba(255,255,255,0.3)', font: { size: 8, family: "'JetBrains Mono', monospace" } }
+      },
+      yMargin: {
+        position: 'left',
+        grid: { color: 'rgba(255,255,255,0.04)', drawBorder: false },
+        ticks: { color: 'rgba(212,165,116,0.6)', font: { size: 8, family: "'JetBrains Mono', monospace" }, callback: v => v + '%' }
+      },
+      yRevenue: {
+        position: 'right',
+        grid: { display: false },
+        ticks: { color: 'rgba(74,127,181,0.6)', font: { size: 8, family: "'JetBrains Mono', monospace" }, callback: v => v + 'B' }
+      }
+    }
+  }
+});
+
+// ── BRIDGE BARS: animate on load ──
+setTimeout(() => {
+  document.querySelectorAll('.br-fill').forEach(el => {
+    el.style.transition = 'width 900ms cubic-bezier(0.16,1,0.3,1)';
+    el.style.width = el.dataset.w;
+  });
+}, 300);
+</script>
+</body>
+</html>

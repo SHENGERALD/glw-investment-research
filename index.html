@@ -12,6 +12,14 @@
 </head>
 <body>
 
+<!-- SCROLL PROGRESS BAR -->
+<div class="scroll-progress" id="scrollProgress"></div>
+
+<!-- BACK TO TOP BUTTON -->
+<button class="back-to-top" id="backToTop" aria-label="Back to top">
+  <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M10 16V4"/><path d="M4 10l6-6 6 6"/></svg>
+</button>
+
 <!-- STICKY NAVIGATION -->
 <nav class="nav" id="navbar">
   <div class="nav-inner">
@@ -31,6 +39,7 @@
       <a href="#segments">Segments</a>
       <a href="#financials">Financials</a>
       <a href="#estimates">Estimates</a>
+      <a href="#sensitivity">What-If</a>
       <a href="#optionality">Optionality</a>
       <a href="#supply-chain">Supply Chain</a>
       <a href="#catalysts">Catalysts</a>
@@ -38,11 +47,49 @@
       <a href="#risk-comparison">Risk</a>
     </div>
     <div class="nav-cta">
-      <span class="nav-price">GLW $135.95</span>
+      <span class="nav-price"><span class="live-dot"></span>GLW $146.72 <span class="nav-price-delta">&#9650; +$10.77 (+7.9% MTD)</span></span>
       <span class="nav-rating">LONG</span>
     </div>
   </div>
 </nav>
+
+<!-- TICKER TAPE -->
+<div class="ticker-wrap">
+  <div class="ticker-track">
+    <span class="tick">GLW $146.72 <em class="up">▲ +0.73%</em></span>
+    <span class="tick-sep">|</span>
+    <span class="tick">CIEN $448.92 <em class="up">▲ +1.2%</em></span>
+    <span class="tick-sep">|</span>
+    <span class="tick">COHR $259.45 <em class="dn">▼ -0.4%</em></span>
+    <span class="tick-sep">|</span>
+    <span class="tick">LITE $809.51 <em class="up">▲ +2.1%</em></span>
+    <span class="tick-sep">|</span>
+    <span class="tick">APH $127.91 <em class="up">▲ +0.3%</em></span>
+    <span class="tick-sep">|</span>
+    <span class="tick">TEL $210.50 <em class="dn">▼ -0.6%</em></span>
+    <span class="tick-sep">|</span>
+    <span class="tick">S&amp;P 500 5,611 <em class="up">▲ +0.8%</em></span>
+    <span class="tick-sep">|</span>
+    <span class="tick">NDX 19,842 <em class="up">▲ +1.1%</em></span>
+    <span class="tick-sep">|</span>
+    <!-- repeat for seamless loop -->
+    <span class="tick">GLW $146.72 <em class="up">▲ +0.73%</em></span>
+    <span class="tick-sep">|</span>
+    <span class="tick">CIEN $448.92 <em class="up">▲ +1.2%</em></span>
+    <span class="tick-sep">|</span>
+    <span class="tick">COHR $259.45 <em class="dn">▼ -0.4%</em></span>
+    <span class="tick-sep">|</span>
+    <span class="tick">LITE $809.51 <em class="up">▲ +2.1%</em></span>
+    <span class="tick-sep">|</span>
+    <span class="tick">APH $127.91 <em class="up">▲ +0.3%</em></span>
+    <span class="tick-sep">|</span>
+    <span class="tick">TEL $210.50 <em class="dn">▼ -0.6%</em></span>
+    <span class="tick-sep">|</span>
+    <span class="tick">S&amp;P 500 5,611 <em class="up">▲ +0.8%</em></span>
+    <span class="tick-sep">|</span>
+    <span class="tick">NDX 19,842 <em class="up">▲ +1.1%</em></span>
+  </div>
+</div>
 
 <!-- 1. HERO SECTION -->
 <section class="hero" id="hero">
@@ -51,27 +98,57 @@
     <div class="hero-badge">2026 Stock Pitch Competition</div>
     <h1 class="hero-title">LONG <span class="hero-ticker">Corning</span> <span class="hero-symbol">(GLW)</span></h1>
     <p class="hero-tagline">Glass substrates are the structural shift enabling next-gen AI packaging — and Corning is the picks-and-shovels play the market hasn't priced in.</p>
+    <div id="scenarioBadge" class="scenario-badge">Base Case Active</div>
+
+    <div class="thesis-numbers-strip">
+      <div class="thesis-number-item">
+        <span class="tn-value">70%</span>
+        <span class="tn-label">Discount to optical peers</span>
+        <span class="tn-context">vs. CIEN 80× / LITE 109×</span>
+      </div>
+      <div class="thesis-number-divider"></div>
+      <div class="thesis-number-item thesis-number-item--highlight">
+        <span class="tn-value">$0</span>
+        <span class="tn-label">Market value for semi glass</span>
+        <span class="tn-context">Worth $4–$9/share by our model</span>
+      </div>
+      <div class="thesis-number-divider"></div>
+      <div class="thesis-number-item">
+        <span class="tn-value">+9.7%</span>
+        <span class="tn-label">Upside to base target</span>
+        <span class="tn-context">$146.72 → $155–$166</span>
+      </div>
+      <div class="thesis-number-divider"></div>
+      <div class="thesis-number-item">
+        <span class="tn-value">$188</span>
+        <span class="tn-label">FY2028 price target</span>
+        <span class="tn-context">25× × $7.50 EPS — +28% from today</span>
+      </div>
+    </div>
+
     <div class="kpi-grid">
       <div class="kpi-card">
         <span class="kpi-label">Stock Price</span>
-        <span class="kpi-value" data-target="135.95" data-prefix="$">$0</span>
+        <span class="kpi-value" data-target="146.72" data-prefix="$">$0</span>
+        <svg class="kpi-sparkline" id="sparkPrice" viewBox="0 0 80 24" preserveAspectRatio="none"></svg>
       </div>
       <div class="kpi-card">
         <span class="kpi-label">Market Cap</span>
-        <span class="kpi-value" data-target="116.6" data-prefix="$" data-suffix="B">$0B</span>
+        <span class="kpi-value" data-target="125.9" data-prefix="$" data-suffix="B">$0B</span>
       </div>
-      <div class="kpi-card kpi-card--accent">
+      <div class="kpi-card kpi-card--accent kpi-card--pulse">
         <span class="kpi-label">12-Mo Target</span>
         <span class="kpi-value">$155–$166</span>
-        <span class="kpi-delta">+14–22%</span>
+        <span class="kpi-delta">+6–13%</span>
       </div>
       <div class="kpi-card">
         <span class="kpi-label">P/E (TTM)</span>
-        <span class="kpi-value" data-target="74.29" data-suffix="x">0x</span>
+        <span class="kpi-value" data-target="78.9" data-suffix="x">0x</span>
+        <svg class="kpi-sparkline" id="sparkPE" viewBox="0 0 80 24" preserveAspectRatio="none"></svg>
       </div>
       <div class="kpi-card">
         <span class="kpi-label">P/E (FY26E)</span>
-        <span class="kpi-value" data-target="26.7" data-suffix="x">0x</span>
+        <span class="kpi-value" data-target="28.8" data-suffix="x">0x</span>
       </div>
       <div class="kpi-card">
         <span class="kpi-label">Dividend Yield</span>
@@ -91,28 +168,25 @@
     </div>
     <div class="thesis-grid">
       <div class="thesis-card reveal">
-        <div class="thesis-icon">
-          <svg width="40" height="40" viewBox="0 0 40 40" fill="none"><circle cx="20" cy="20" r="18" stroke="currentColor" stroke-width="2"/><path d="M10 20h20M20 10v20" stroke="currentColor" stroke-width="2"/><circle cx="20" cy="20" r="6" fill="currentColor" opacity="0.2"/></svg>
-        </div>
-        <h3>AI Optical Supercycle</h3>
-        <div class="thesis-stat">+35% YoY</div>
-        <p>Optical Communications revenue grew 35% YoY to $6.27B in FY2025. The Meta $6B multi-year deal anchors ~40% of segment revenue. BofA estimates scale-out revenue reaching $10.3B by 2030. Enterprise grew 61% YoY.</p>
+        <div class="tc-number">+35%</div>
+        <div class="tc-title">AI Optical Supercycle</div>
+        <div class="tc-subtitle">YoY revenue growth · FY2025</div>
+        <div class="tc-body">Meta $6B contracted deal anchors ~40% of segment revenue. Enterprise optical grew 61% YoY. BofA estimates scale-out reaching $10.3B by 2030.</div>
+        <div class="tc-tag">STRUCTURAL DRIVER 01</div>
+      </div>
+      <div class="thesis-card thesis-card--accent reveal">
+        <div class="tc-number">$0</div>
+        <div class="tc-title">Free Call Option</div>
+        <div class="tc-subtitle">Analyst consensus value for semi glass</div>
+        <div class="tc-body">Corning developing glass substrates to replace organic ABF in AI chip packaging. 0 mentions in 4 earnings calls. CEO confirmed doubling semi business by decade-end. Worth $4–$9/share.</div>
+        <div class="tc-tag">STRUCTURAL DRIVER 02 · THE ALPHA</div>
       </div>
       <div class="thesis-card reveal">
-        <div class="thesis-icon">
-          <svg width="40" height="40" viewBox="0 0 40 40" fill="none"><rect x="6" y="14" width="28" height="18" rx="2" stroke="currentColor" stroke-width="2"/><rect x="12" y="8" width="16" height="8" rx="1" stroke="currentColor" stroke-width="2"/><path d="M14 22h12M14 26h8" stroke="currentColor" stroke-width="2" opacity="0.5"/></svg>
-        </div>
-        <h3>Semiconductor Glass Free Call Option</h3>
-        <div class="thesis-stat">$0 Priced In</div>
-        <p>Zero mentions of glass substrates in 4 quarters of earnings calls = zero priced by analysts. CEO Wendell Weeks confirmed: "On track to double our semiconductor business by end of the decade." This is the alpha.</p>
-      </div>
-      <div class="thesis-card reveal">
-        <div class="thesis-icon">
-          <svg width="40" height="40" viewBox="0 0 40 40" fill="none"><path d="M8 32L16 18L24 24L32 8" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/><circle cx="32" cy="8" r="3" fill="currentColor"/></svg>
-        </div>
-        <h3>Springboard Plan Execution</h3>
-        <div class="thesis-stat">$11B by 2028</div>
-        <p>Management upgraded its plan to $11B in incremental annualized sales by end of 2028 (from $8B). The 20% operating margin target was achieved a full year early in Q4 2025 (20.2%). Execution credibility is established.</p>
+        <div class="tc-number">$11B</div>
+        <div class="tc-title">Springboard Execution</div>
+        <div class="tc-subtitle">Incremental revenue target by 2028</div>
+        <div class="tc-body">Plan upgraded from $8B. 20% margin target hit 1 year early (Q4 2025: 20.2%). Meta $6B deal contracted. Three milestones delivered on or ahead of schedule.</div>
+        <div class="tc-tag">STRUCTURAL DRIVER 03</div>
       </div>
     </div>
   </div>
@@ -197,13 +271,28 @@
   <div class="container">
     <div class="section-header">
       <span class="section-number">03</span>
-      <h2>Sum-of-the-Parts Valuation</h2>
+      <h2>GLW's Optical Comms Alone Justifies $116/sh — Semi Glass Is Free</h2>
       <p class="section-subtitle">Interactive SOTP model — toggle between scenarios</p>
     </div>
     <div class="sotp-controls">
       <button class="sotp-btn" data-scenario="bear">Bear Case</button>
       <button class="sotp-btn active" data-scenario="base">Base Case</button>
       <button class="sotp-btn" data-scenario="bull">Bull Case</button>
+      <button class="sotp-btn sotp-btn--custom" data-scenario="custom">Custom</button>
+    </div>
+    <div class="custom-scenario-panel" id="customScenarioPanel">
+      <div class="custom-panel-header">
+        <h3>Custom Scenario Builder</h3>
+        <p>Adjust EV/EBITDA multiples per segment to model your own scenario</p>
+        <button class="custom-reset-btn" id="customResetBtn">Reset to Base</button>
+      </div>
+      <div class="slider-grid" id="sliderGrid">
+        <!-- Sliders injected by JS -->
+      </div>
+      <div class="custom-result">
+        <span class="custom-result-label">Custom Implied Price/Share</span>
+        <span class="custom-result-price" id="customPrice">$116</span>
+      </div>
     </div>
     <div class="sotp-summary reveal">
       <div class="sotp-metric">
@@ -219,8 +308,8 @@
         <span class="sotp-metric-value" id="sotp-price">$116</span>
       </div>
       <div class="sotp-metric">
-        <span class="sotp-metric-label">vs. Current $135.95</span>
-        <span class="sotp-metric-value" id="sotp-upside">-15%</span>
+        <span class="sotp-metric-label">vs. Current $146.72</span>
+        <span class="sotp-metric-value" id="sotp-upside">-21%</span>
       </div>
     </div>
     <div class="chart-container reveal">
@@ -243,6 +332,7 @@
     <div class="charts-duo reveal">
       <div class="chart-card">
         <h3>FY2025 Revenue by Segment ($15.6B)</h3>
+        <p class="chart-hint">Click a segment for details</p>
         <div class="chart-wrapper">
           <canvas id="segmentDoughnut"></canvas>
         </div>
@@ -253,6 +343,10 @@
           <canvas id="revenueTrend"></canvas>
         </div>
       </div>
+    </div>
+    <div class="segment-drilldown" id="segmentDrilldown">
+      <button class="drilldown-close" id="drilldownClose">&times;</button>
+      <div class="drilldown-content" id="drilldownContent"></div>
     </div>
   </div>
 </section>
@@ -319,7 +413,7 @@
   <div class="container">
     <div class="section-header">
       <span class="section-number">06</span>
-      <h2>Forward Estimates & Valuation</h2>
+      <h2>EPS Grows 174% by FY2026 — P/E Compresses to 22.8× by FY2027</h2>
       <p class="section-subtitle">P/E multiple compression as earnings growth catches up to price</p>
     </div>
     <div class="estimates-grid reveal">
@@ -357,16 +451,16 @@
             <td>$7.50</td>
           </tr>
           <tr>
-            <td>P/E at $135.95</td>
-            <td>74.3x</td>
-            <td>26.7x</td>
-            <td>21.1x</td>
-            <td>18.1x</td>
+            <td>P/E at $146.72</td>
+            <td>78.9x</td>
+            <td>28.8x</td>
+            <td>22.8x</td>
+            <td>19.6x</td>
           </tr>
           <tr>
             <td>EV/EBITDA</td>
             <td>22.5x</td>
-            <td>24.1x</td>
+            <td>22.1x</td>
             <td>20.5x</td>
             <td>17.6x</td>
           </tr>
@@ -402,6 +496,246 @@
         <span class="target-basis">Semi glass $2B revenue by 2030</span>
       </div>
     </div>
+  </div>
+</section>
+
+<!-- 6.4 WHAT-IF SPLASH OVERLAY -->
+<section class="section splash-gate" id="sensitivity-gate">
+  <div class="splash-gate-inner">
+    <div class="sg-eyebrow">06.5 · SCENARIO ANALYSIS</div>
+    <h2 class="sg-title">What if the market is<br><em>completely wrong?</em></h2>
+    <p class="sg-sub">GLW at 40× P/E + 20% margins = <strong>$237/share</strong>.<br>Drag the sliders. See what consensus is missing.</p>
+    <div class="sg-stats">
+      <div class="sg-stat">
+        <span class="sg-stat-val">$116</span>
+        <span class="sg-stat-label">Bear floor (20× P/E)</span>
+      </div>
+      <div class="sg-stat sg-stat--accent">
+        <span class="sg-stat-val">$161</span>
+        <span class="sg-stat-label">Base case (25× P/E)</span>
+      </div>
+      <div class="sg-stat">
+        <span class="sg-stat-val">$213+</span>
+        <span class="sg-stat-label">Bull (30× + semi glass)</span>
+      </div>
+    </div>
+    <button class="sg-cta" id="sgEnter">
+      <span>Open Scenario Builder</span>
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M8 3l5 5-5 5M3 8h10" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </button>
+    <p class="sg-hint">or scroll to enter</p>
+  </div>
+</section>
+
+<!-- 6.5 SENSITIVITY ANALYSIS -->
+<section class="section" id="sensitivity">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-number">06.5</span>
+      <h2>What-If Scenario Builder</h2>
+      <p class="section-subtitle">Adjust assumptions in real time to stress-test the valuation</p>
+    </div>
+    <div class="sensitivity-layout reveal">
+      <div class="sensitivity-sliders">
+        <div class="sens-slider-group">
+          <label class="sens-label">Revenue Growth Rate <span class="sens-val" id="sensRevGrowthVal">20%</span></label>
+          <input type="range" class="sens-range" id="sensRevGrowth" min="5" max="40" value="20" step="1">
+          <div class="sens-range-labels"><span>5%</span><span>40%</span></div>
+        </div>
+        <div class="sens-slider-group">
+          <label class="sens-label">Operating Margin <span class="sens-val" id="sensOpMarginVal">18%</span></label>
+          <input type="range" class="sens-range" id="sensOpMargin" min="12" max="25" value="18" step="0.5">
+          <div class="sens-range-labels"><span>12%</span><span>25%</span></div>
+        </div>
+        <div class="sens-slider-group">
+          <label class="sens-label">Forward P/E Multiple <span class="sens-val" id="sensPEVal">28.8x</span></label>
+          <input type="range" class="sens-range" id="sensPE" min="15" max="40" value="28.8" step="0.5">
+          <div class="sens-range-labels"><span>15x</span><span>40x</span></div>
+        </div>
+      </div>
+      <div class="sensitivity-output">
+        <div class="sens-price-display">
+          <span class="sens-price-label">Projected Stock Price</span>
+          <span class="sens-price-value" id="sensPriceValue">$146.72</span>
+          <span class="sens-price-delta" id="sensPriceDelta">+0% vs. current</span>
+        </div>
+        <div class="sens-chart-wrapper">
+          <canvas id="sensRevenueChart"></canvas>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 6.6 PEER COMP TABLE + DCF + ANALYST CONSENSUS -->
+<section class="section" id="comps">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-number">06.6</span>
+      <h2>70% Discount to Optical Pure-Plays — Conglomerate Penalty = Alpha</h2>
+      <p class="section-subtitle">GLW EV/EBITDA 22.5× vs. CIEN 80× and LITE 109× — despite 23.2% margins vs. 7% and 5%</p>
+    </div>
+
+    <!-- Peer Comp Table -->
+    <div class="estimates-table reveal" style="margin-bottom:2rem;">
+      <h3 style="font-size:1rem;font-weight:700;color:var(--navy);margin-bottom:0.75rem;">EV/EBITDA Trading Comparables</h3>
+      <table class="comp-table">
+        <thead>
+          <tr>
+            <th>Company</th>
+            <th>Ticker</th>
+            <th>Mkt Cap</th>
+            <th>EV/Rev (LTM)</th>
+            <th>EV/EBITDA (LTM)</th>
+            <th>EV/EBITDA (Fwd)</th>
+            <th>EBITDA Margin</th>
+            <th>Gross Margin</th>
+            <th>vs GLW (EV/EBITDA)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="table-highlight glw-row">
+            <td><strong>Corning</strong></td>
+            <td><strong>GLW</strong></td>
+            <td><strong>$125.9B</strong></td>
+            <td><strong>5.2×</strong></td>
+            <td><strong>22.5× <div class="inline-bar" style="width:calc(22.5/110*100%)"></div></strong></td>
+            <td><strong>22.1×</strong></td>
+            <td><strong>23.2%</strong></td>
+            <td><strong>36.0%</strong></td>
+            <td><strong>—</strong></td>
+          </tr>
+          <tr>
+            <td>Ciena</td><td>CIEN</td><td>$63.5B</td>
+            <td>5.7×</td>
+            <td>80.0× <div class="inline-bar" style="width:calc(80/110*100%)"></div></td>
+            <td>38.0×</td><td>7.1%</td><td>42.0%</td>
+            <td class="vs-glw-positive">+57.5× premium</td>
+          </tr>
+          <tr>
+            <td>Coherent</td><td>COHR</td><td>$41.1B</td>
+            <td>3.4×</td>
+            <td>23.1× <div class="inline-bar" style="width:calc(23.1/110*100%)"></div></td>
+            <td>21.5×</td><td>14.5%</td><td>35.2%</td>
+            <td class="vs-glw-neutral">+0.6×</td>
+          </tr>
+          <tr>
+            <td>Lumentum</td><td>LITE</td><td>$57.8B</td>
+            <td>5.1×</td>
+            <td>108.7× <div class="inline-bar" style="width:calc(108.7/110*100%)"></div></td>
+            <td>32.7×</td><td>4.7%</td><td>28.0%</td>
+            <td class="vs-glw-positive">+86.2× premium</td>
+          </tr>
+          <tr>
+            <td>Amphenol</td><td>APH</td><td>$157.2B</td>
+            <td>7.3×</td>
+            <td>24.9× <div class="inline-bar" style="width:calc(24.9/110*100%)"></div></td>
+            <td>15.0×</td><td>29.4%</td><td>36.9%</td>
+            <td class="vs-glw-neutral">+2.4×</td>
+          </tr>
+          <tr>
+            <td>TE Connectivity</td><td>TEL</td><td>$61.8B</td>
+            <td>4.0×</td>
+            <td>16.9× <div class="inline-bar" style="width:calc(16.9/110*100%)"></div></td>
+            <td>—</td><td>23.5%</td><td>35.2%</td>
+            <td class="vs-glw-discount">-5.6× discount</td>
+          </tr>
+        </tbody>
+      </table>
+      <p style="font-size:0.75rem;color:var(--text-muted);margin-top:0.5rem;">
+        Key Insight: GLW FY27E EV/EBITDA (22.1×) trades at 40–50% discount to CIEN (38×) and LITE (33×) despite higher EBITDA margins (23% vs. 7% and 5%). Peer median FY27E EV/EBITDA ~25×. Conglomerate discount = alpha opportunity. Conglomerate discount = alpha opportunity.
+        <br>Source: Perplexity Finance, CB Insights, PitchBook — as of April 2, 2026
+      </p>
+    </div>
+
+    <!-- DCF + Analyst Consensus side by side -->
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;" class="reveal">
+
+      <!-- DCF Card -->
+      <div class="chart-card">
+        <h3>DCF Valuation (Conservative Floor)</h3>
+        <table>
+          <thead><tr><th>Assumption</th><th>Value</th><th>Note</th></tr></thead>
+          <tbody>
+            <tr><td>Revenue CAGR</td><td>~12.7%</td><td>FY26 $18.8B → FY30 $31.5B</td></tr>
+            <tr><td>EBITDA Margin</td><td>24% → 30%</td><td>Optical scale-up</td></tr>
+            <tr><td>WACC</td><td>9.5%</td><td>Blended cost of capital</td></tr>
+            <tr><td>Terminal Growth</td><td>3.0%</td><td>Conservative</td></tr>
+            <tr><td>Enterprise Value</td><td>$68.3B</td><td>Total EV</td></tr>
+            <tr><td>Less Net Debt</td><td>($8.7B)</td><td>FY2025 net debt</td></tr>
+            <tr class="table-highlight"><td><strong>Equity Value</strong></td><td><strong>$59.6B</strong></td><td><strong>858M shares</strong></td></tr>
+          </tbody>
+        </table>
+        <div style="display:flex;gap:1rem;margin-top:1rem;">
+          <div style="flex:1;background:var(--navy);color:white;border-radius:8px;padding:0.75rem;text-align:center;">
+            <div style="font-size:1.5rem;font-weight:800;">$69.50</div>
+            <div style="font-size:0.7rem;opacity:0.8;">DCF Base (no growth premium)</div>
+          </div>
+          <div style="flex:1;background:#A84B2F;color:white;border-radius:8px;padding:0.75rem;text-align:center;">
+            <div style="font-size:1.5rem;font-weight:800;">$73.90</div>
+            <div style="font-size:0.7rem;opacity:0.8;">With Semi Glass Upside</div>
+          </div>
+        </div>
+        <p style="font-size:0.7rem;color:var(--text-muted);margin-top:0.5rem;">DCF = conservative floor only. Forward P/E $155–166 = primary valuation. Sensitivity: $116–$213.</p>
+      </div>
+
+      <!-- Analyst Consensus Card -->
+      <div class="chart-card">
+        <h3>Analyst Consensus (9 Analysts)</h3>
+        <div style="background:#1B3A5C;color:white;border-radius:8px;padding:0.75rem 1rem;margin-bottom:1rem;display:flex;justify-content:space-between;align-items:center;">
+          <div>
+            <div style="font-size:0.75rem;opacity:0.7;">Rating</div>
+            <div style="font-size:1.2rem;font-weight:800;color:#D4A574;">STRONG BUY</div>
+            <div style="font-size:0.7rem;opacity:0.6;">9/9 Buy-equivalent</div>
+          </div>
+          <div style="text-align:right;">
+            <div style="font-size:0.75rem;opacity:0.7;">Consensus Avg</div>
+            <div style="font-size:1.5rem;font-weight:800;">$155</div>
+            <div style="font-size:0.7rem;opacity:0.6;">High: $170 (Citi)</div>
+          </div>
+        </div>
+        <table>
+          <thead><tr><th>Firm</th><th>Rating</th><th>Target</th></tr></thead>
+          <tbody>
+            <tr class="table-highlight"><td><strong>BofA</strong></td><td>Buy</td><td><strong>$155</strong></td></tr>
+            <tr><td>Citi</td><td>Buy</td><td>$170</td></tr>
+            <tr><td>UBS</td><td>Buy</td><td>$160</td></tr>
+            <tr><td>JPMorgan</td><td>Neutral</td><td>$115</td></tr>
+            <tr><td>Morgan Stanley</td><td>Equal Weight</td><td>$127</td></tr>
+            <tr><td colspan="2" style="color:var(--text-muted);font-size:0.75rem;">4 additional Buy ratings</td><td style="color:var(--text-muted);font-size:0.75rem;">avg ~$158</td></tr>
+          </tbody>
+        </table>
+        <p style="font-size:0.75rem;color:var(--text-muted);margin-top:0.5rem;">
+          Current $146.72 = 22.8× FY27E P/E — BofA (24×) to Citi (26×) bracket. +6–13% upside to $155–$166 target.
+        </p>
+      </div>
+
+    </div>
+
+    <!-- P/E Sensitivity Matrix -->
+    <div class="estimates-table reveal" style="margin-top:2rem;" id="sensitivityMatrixWrap">
+      <h3 style="font-size:1rem;font-weight:700;color:var(--navy);margin-bottom:0.75rem;">P/E × EPS Sensitivity Matrix — Target Price ($)</h3>
+      <div class="sens-tooltip" id="sensTooltip"></div>
+      <table class="sens-matrix">
+        <thead>
+          <tr>
+            <th data-col="0">P/E Multiple</th>
+            <th data-col="1">Bear EPS: $5.80</th>
+            <th data-col="2">Base EPS: $6.44 ★</th>
+            <th data-col="3">Bull EPS: $7.10</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td data-row="0" data-col="0" data-pe="20" data-eps="">20×</td><td data-row="0" data-col="1" data-pe="20" data-eps="5.80" data-price="116">$116</td><td data-row="0" data-col="2" data-pe="20" data-eps="6.44" data-price="129">$129</td><td data-row="0" data-col="3" data-pe="20" data-eps="7.10" data-price="142">$142</td></tr>
+          <tr><td data-row="1" data-col="0" data-pe="22" data-eps="">22×</td><td data-row="1" data-col="1" data-pe="22" data-eps="5.80" data-price="128">$128</td><td data-row="1" data-col="2" data-pe="22" data-eps="6.44" data-price="142">$142</td><td data-row="1" data-col="3" data-pe="22" data-eps="7.10" data-price="156">$156</td></tr>
+          <tr class="table-highlight"><td data-row="2" data-col="0" data-pe="25" data-eps=""><strong>25× (Base) ★</strong></td><td data-row="2" data-col="1" data-pe="25" data-eps="5.80" data-price="145">$145</td><td data-row="2" data-col="2" data-pe="25" data-eps="6.44" data-price="161" class="base-case-cell"><strong>$161</strong></td><td data-row="2" data-col="3" data-pe="25" data-eps="7.10" data-price="178">$178</td></tr>
+          <tr><td data-row="3" data-col="0" data-pe="28" data-eps="">28×</td><td data-row="3" data-col="1" data-pe="28" data-eps="5.80" data-price="162">$162</td><td data-row="3" data-col="2" data-pe="28" data-eps="6.44" data-price="180">$180</td><td data-row="3" data-col="3" data-pe="28" data-eps="7.10" data-price="199">$199</td></tr>
+          <tr><td data-row="4" data-col="0" data-pe="30" data-eps="">30×</td><td data-row="4" data-col="1" data-pe="30" data-eps="5.80" data-price="174">$174</td><td data-row="4" data-col="2" data-pe="30" data-eps="6.44" data-price="193">$193</td><td data-row="4" data-col="3" data-pe="30" data-eps="7.10" data-price="213">$213</td></tr>
+        </tbody>
+      </table>
+      <p style="font-size:0.75rem;color:var(--text-muted);margin-top:0.5rem;">★ Base case: 25× × $6.44 = $161. Current $146.72 = +9.7% upside to base. Sensitivity range: $116–$213.</p>
+    </div>
+
   </div>
 </section>
 
@@ -559,6 +893,13 @@
       <h2>Catalyst Timeline</h2>
       <p class="section-subtitle">Key events from 2025 to 2028+ with confidence levels</p>
     </div>
+    <div class="catalyst-filters" id="catalystFilters">
+      <button class="cat-filter active" data-filter="all">All</button>
+      <button class="cat-filter" data-filter="high">HIGH</button>
+      <button class="cat-filter" data-filter="medium">MEDIUM</button>
+      <button class="cat-filter" data-filter="low">LOW</button>
+      <button class="cat-filter" data-filter="completed">Completed</button>
+    </div>
     <div class="catalyst-timeline reveal">
       <div class="cat-track">
         <div class="cat-year-marker" style="left: 0%">2025</div>
@@ -689,7 +1030,13 @@
       <h2>Corning vs. SKC Risk Profile</h2>
       <p class="section-subtitle">Why Corning is the safer, asymmetric way to play glass substrates</p>
     </div>
-    <div class="comparison-grid reveal">
+    <div class="comparison-controls">
+      <button class="flip-perspective-btn" id="flipPerspective">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M2 4h10l-3-3M14 12H4l3 3"/></svg>
+        Flip Perspective
+      </button>
+    </div>
+    <div class="comparison-grid reveal" id="comparisonGrid">
       <div class="comp-header comp-header--corning">Corning (GLW)</div>
       <div class="comp-header comp-header--factor">Factor</div>
       <div class="comp-header comp-header--skc">SKC / Absolics</div>
@@ -813,6 +1160,32 @@
   </div>
 </section>
 
+<!-- VERDICT BANNER -->
+<section class="verdict-banner">
+  <div class="verdict-inner">
+    <div class="verdict-rating">BUY</div>
+    <div class="verdict-divider"></div>
+    <div class="verdict-details">
+      <div class="verdict-line">
+        <span class="vl-label">12-Month Target</span>
+        <span class="vl-value">$155 – $166</span>
+      </div>
+      <div class="verdict-line">
+        <span class="vl-label">Current Price</span>
+        <span class="vl-value">$146.72</span>
+      </div>
+      <div class="verdict-line">
+        <span class="vl-label">Upside</span>
+        <span class="vl-value vl-highlight">+6–13%</span>
+      </div>
+    </div>
+    <div class="verdict-divider"></div>
+    <div class="verdict-thesis">
+      <p>Structural AI infrastructure play with a $4–$9/share free call option the market hasn’t priced. Entry at 22.5× EV/EBITDA — 70% discount to optical peers with superior margins.</p>
+    </div>
+  </div>
+</section>
+
 <!-- 14. FOOTER / SUMMARY -->
 <section class="section section--footer" id="summary">
   <div class="container">
@@ -822,7 +1195,7 @@
         <div class="footer-target">
           <span class="footer-target-label">12-Month Target</span>
           <span class="footer-target-price">$155 – $166</span>
-          <span class="footer-target-upside">+14% to +22% upside</span>
+          <span class="footer-target-upside">+6% to +13% upside</span>
         </div>
         <div class="footer-target footer-target--long">
           <span class="footer-target-label">2028 Full Thesis</span>
