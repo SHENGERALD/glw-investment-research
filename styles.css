@@ -112,13 +112,13 @@ img, svg { display: block; max-width: 100%; }
 
 /* === NAVIGATION === */
 .nav {
-  position: fixed;
+  position: sticky;
   top: 0;
   left: 0;
   right: 0;
   height: var(--nav-height);
   z-index: 1000;
-  background: rgba(255, 255, 255, 0.92);
+  background: rgba(255, 255, 255, 0.95);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   border-bottom: 1px solid rgba(27, 58, 92, 0.08);
@@ -207,7 +207,7 @@ img, svg { display: block; max-width: 100%; }
 /* === HERO === */
 .hero {
   position: relative;
-  padding: calc(var(--nav-height) + var(--space-16)) 0 var(--space-16);
+  padding: var(--space-16) 0 var(--space-16);
   background: linear-gradient(135deg, var(--navy-dark) 0%, var(--navy) 40%, var(--navy-light) 100%);
   color: white;
   overflow: hidden;
