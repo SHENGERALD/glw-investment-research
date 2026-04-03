@@ -2053,7 +2053,8 @@ canvas {
 }
 .sg-stat:last-child { border-right: none; }
 .sg-stat--accent {
-  background: rgba(168,75,47,0.12);
+  background: var(--rust);
+  border-right: 1px solid rgba(168,75,47,0.6);
 }
 .sg-stat-val {
   font-family: var(--font-heading);
@@ -2062,12 +2063,13 @@ canvas {
   font-variant-numeric: tabular-nums;
   line-height: 1; margin-bottom: 0.3rem;
 }
-.sg-stat--accent .sg-stat-val { color: var(--sand); }
+.sg-stat--accent .sg-stat-val { color: #FFFFFF; font-size: 1.9rem; }
 .sg-stat-label {
   font-size: 0.62rem; color: rgba(255,255,255,0.35);
   text-transform: uppercase; letter-spacing: 0.06em;
   text-align: center;
 }
+.sg-stat--accent .sg-stat-label { color: rgba(255,255,255,0.8); }
 .sg-cta {
   display: flex; align-items: center; gap: 0.6rem;
   background: var(--rust);
