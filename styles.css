@@ -2029,7 +2029,7 @@ canvas {
 }
 .sg-title em {
   font-style: normal;
-  color: var(--sand);
+  color: #F5D9B0;
 }
 .sg-sub {
   font-size: 1rem; color: rgba(255,255,255,0.55);
@@ -2383,7 +2383,7 @@ canvas {
   gap: 0.4rem;
   background: rgba(212,165,116,0.12);
   border: 1.5px solid var(--sand);
-  color: var(--sand);
+  color: #F5D9B0;
   font-family: var(--font-heading);
   font-size: 0.78rem;
   font-weight: 800;
