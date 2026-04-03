@@ -2381,17 +2381,18 @@ canvas {
   display: inline-flex;
   align-items: center;
   gap: 0.4rem;
-  background: rgba(212, 165, 116, 0.18);
-  border: 1.5px solid var(--sand, #D4A574);
-  color: var(--navy);
+  background: var(--sand);
+  border: 1.5px solid var(--sand);
+  color: var(--navy-dark);
   font-family: var(--font-heading);
-  font-size: 0.75rem;
-  font-weight: 700;
-  letter-spacing: 0.06em;
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.07em;
   text-transform: uppercase;
-  padding: 0.3rem 0.75rem;
+  padding: 0.35rem 0.9rem;
   border-radius: 999px;
   margin-bottom: 1rem;
+  box-shadow: 0 2px 12px rgba(212,165,116,0.45);
   transition: background 300ms ease, border-color 300ms ease, color 300ms ease;
 }
 .scenario-badge::before {
