@@ -674,6 +674,23 @@ body {
   .alpha-section { grid-template-columns: 1fr; }
 }
 </style>
+<style>
+/* ── PAGE TRANSITION ── */
+.page-leaving {
+  animation: pageOut 0.35s cubic-bezier(0.4, 0, 1, 1) forwards;
+}
+@keyframes pageOut {
+  0%   { opacity: 1; transform: scale(1); filter: blur(0); }
+  100% { opacity: 0; transform: scale(0.985); filter: blur(4px); }
+}
+body {
+  animation: pageIn 0.4s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+@keyframes pageIn {
+  0%   { opacity: 0; transform: scale(1.01); filter: blur(3px); }
+  100% { opacity: 1; transform: scale(1); filter: blur(0); }
+}
+</style>
 </head>
 <body>
 
@@ -1241,6 +1258,20 @@ document.addEventListener('keydown', function(e) {
   if (e.key === 'd' || e.key === 'D') window.location.href = 'dashboard.html';
   if (e.key === 'p' || e.key === 'P') window.location.href = 'index.html';
 });
+</script>
+<script>
+// ── Smooth page transitions ──
+(function() {
+  document.querySelectorAll('a[href$=".html"]').forEach(function(link) {
+    link.addEventListener('click', function(e) {
+      var href = this.getAttribute('href');
+      if (!href || href.startsWith('http') || href.startsWith('#')) return;
+      e.preventDefault();
+      document.body.classList.add('page-leaving');
+      setTimeout(function() { window.location.href = href; }, 320);
+    });
+  });
+})();
 </script>
 </body>
 </html>
