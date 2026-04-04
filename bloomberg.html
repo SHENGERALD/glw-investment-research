@@ -303,7 +303,7 @@ body {
   border-bottom: 1px solid var(--border);
   padding: 0.75rem 1rem;
   display: grid;
-  grid-template-columns: 1fr 220px;
+  grid-template-columns: 1fr 270px;
   gap: 1rem;
   min-height: 280px;
 }
@@ -355,6 +355,8 @@ body {
   display: flex;
   flex-direction: column;
   gap: 0;
+  min-width: 0;
+  overflow: hidden;
 }
 .ap-title {
   font-family: var(--mono);
@@ -370,12 +372,14 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  gap: 0.5rem;
   padding: 0.35rem 0;
   border-bottom: 1px solid rgba(255,255,255,0.04);
   font-size: 0.82rem;
+  min-width: 0;
 }
 .ap-row:last-child { border-bottom: none; }
-.ap-key { color: var(--muted); }
+.ap-key { color: var(--muted); flex-shrink: 0; }
 .ap-val {
   font-family: var(--mono);
   font-weight: 600;
