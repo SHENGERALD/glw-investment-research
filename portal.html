@@ -540,15 +540,15 @@ function applyLang(lang) {
   document.querySelectorAll('.lang-btn').forEach(btn => {
     btn.classList.toggle('active', btn.dataset.lang === lang);
   });
-  localStorage.setItem('glw_lang', lang);
+  window._glwLang = lang;
 }
 
 document.querySelectorAll('.lang-btn').forEach(btn => {
   btn.addEventListener('click', () => applyLang(btn.dataset.lang));
 });
 
-// Init from localStorage
-applyLang(localStorage.getItem('glw_lang') || 'en');
+// Init language
+applyLang(window._glwLang || 'en');
 </script>
 </body>
 </html>

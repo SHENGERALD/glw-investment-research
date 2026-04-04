@@ -1226,14 +1226,14 @@ document.addEventListener('keydown', function (e) {
     document.querySelectorAll('.lang-btn').forEach(btn => {
       btn.classList.toggle('active', btn.dataset.lang === lang);
     });
-    localStorage.setItem('glw_lang', lang);
+    window._glwLang = lang;
   }
 
   document.querySelectorAll('.lang-btn').forEach(btn => {
     btn.addEventListener('click', () => applyLang(btn.dataset.lang));
   });
 
-  applyLang(localStorage.getItem('glw_lang') || 'en');
+  applyLang(window._glwLang || 'en');
 })();
 </script>
 </body>
