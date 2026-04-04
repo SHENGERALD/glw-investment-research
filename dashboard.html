@@ -25,7 +25,12 @@ body {
   0%   { opacity: 0; transform: scale(1.01); filter: blur(3px); }
   100% { opacity: 1; transform: scale(1); filter: blur(0); }
 }
+/* === LANG TOGGLE === */
+.lang-toggle { display: flex; align-items: center; gap: 0.3rem; background: rgba(27,58,92,0.5); border: 1px solid rgba(255,255,255,0.12); border-radius: 6px; padding: 0.2rem 0.5rem; margin-right: 0.5rem; }
+.lang-btn { background: none; border: none; color: rgba(255,255,255,0.45); font-family: 'Calibri', monospace; font-size: 0.68rem; font-weight: 700; cursor: pointer; padding: 0.1rem 0.35rem; border-radius: 4px; transition: all 150ms; letter-spacing: 0.05em; }
+.lang-btn.active { background: var(--sand, #D4A574); color: var(--navy-dark, #0F2440); }
 </style>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
 
@@ -50,21 +55,26 @@ body {
       <span>GLW Research</span>
     </a>
     <div class="nav-links">
-      <a href="#thesis">Thesis</a>
-      <a href="#timeline">Timeline</a>
-      <a href="#sotp">SOTP</a>
-      <a href="#segments">Segments</a>
-      <a href="#financials">Financials</a>
-      <a href="#estimates">Estimates</a>
-      <a href="#sensitivity">What-If</a>
-      <a href="#optionality">Optionality</a>
-      <a href="#supply-chain">Supply Chain</a>
+      <a href="#thesis" data-i18n="nav_thesis">Thesis</a>
+      <a href="#timeline" data-i18n="nav_timeline">Timeline</a>
+      <a href="#sotp" data-i18n="nav_sotp">SOTP</a>
+      <a href="#segments" data-i18n="nav_segments">Segments</a>
+      <a href="#financials" data-i18n="nav_financials">Financials</a>
+      <a href="#estimates" data-i18n="nav_estimates">Estimates</a>
+      <a href="#sensitivity" data-i18n="nav_whatif">What-If</a>
+      <a href="#optionality" data-i18n="nav_optionality">Optionality</a>
+      <a href="#supply-chain" data-i18n="nav_supplychain">Supply Chain</a>
       <a href="#catalysts">Catalysts</a>
       <a href="#moat">Moat</a>
       <a href="#risk-comparison">Risk</a>
     </div>
     <div class="nav-cta">
       <span class="nav-price"><span class="live-dot"></span>GLW $146.72 <span class="nav-price-delta">&#9650; +$10.77 (+7.9% MTD)</span></span>
+      <div class="lang-toggle">
+  <button class="lang-btn active" data-lang="en">EN</button>
+  <span style="color:rgba(255,255,255,0.2);font-size:0.6rem;">|</span>
+  <button class="lang-btn" data-lang="zh">中文</button>
+</div>
       <a href="bloomberg.html" id="terminalBtn" style="
   color: #fff;
   background: var(--rust);
@@ -210,7 +220,7 @@ body {
   <div class="container">
     <div class="section-header">
       <span class="section-number">01</span>
-      <h2>Investment Thesis</h2>
+      <h2 data-i18n="s01">Investment Thesis</h2>
       <p class="section-subtitle">Three converging structural catalysts</p>
     </div>
     <div class="thesis-grid">
@@ -244,7 +254,7 @@ body {
   <div class="container">
     <div class="section-header">
       <span class="section-number">02</span>
-      <h2>Glass Substrate Adoption</h2>
+      <h2 data-i18n="s02">Glass Substrate Adoption</h2>
       <p class="section-subtitle">Three-stage roadmap from glass carrier to glass interposer</p>
     </div>
     <div class="timeline-container">
@@ -318,7 +328,7 @@ body {
   <div class="container">
     <div class="section-header">
       <span class="section-number">03</span>
-      <h2>GLW's Optical Comms Alone Justifies $116/sh — Semi Glass Is Free</h2>
+      <h2 data-i18n="s03">GLW's Optical Comms Alone Justifies $116/sh — Semi Glass Is Free</h2>
       <p class="section-subtitle">Interactive SOTP model — toggle between scenarios</p>
     </div>
     <div class="sotp-controls">
@@ -373,7 +383,7 @@ body {
   <div class="container">
     <div class="section-header">
       <span class="section-number">04</span>
-      <h2>Segment Revenue Breakdown</h2>
+      <h2 data-i18n="s04">Segment Revenue Breakdown</h2>
       <p class="section-subtitle">FY2025 revenue mix and five-year optical growth trajectory</p>
     </div>
     <div class="charts-duo reveal">
@@ -403,7 +413,7 @@ body {
   <div class="container">
     <div class="section-header">
       <span class="section-number">05</span>
-      <h2>Financial Performance</h2>
+      <h2 data-i18n="s05">Financial Performance</h2>
       <p class="section-subtitle">FY2025 results — accelerating growth across all metrics</p>
     </div>
     <div class="metric-grid reveal">
@@ -460,7 +470,7 @@ body {
   <div class="container">
     <div class="section-header">
       <span class="section-number">06</span>
-      <h2>EPS Grows 174% by FY2026 — P/E Compresses to 22.8× by FY2027</h2>
+      <h2 data-i18n="s06">EPS Grows 174% by FY2026 — P/E Compresses to 22.8× by FY2027</h2>
       <p class="section-subtitle">P/E multiple compression as earnings growth catches up to price</p>
     </div>
     <div class="estimates-grid reveal">
@@ -579,7 +589,7 @@ body {
   <div class="container">
     <div class="section-header">
       <span class="section-number">06.5</span>
-      <h2>What-If Scenario Builder</h2>
+      <h2 data-i18n="s07">What-If Scenario Builder</h2>
       <p class="section-subtitle">Adjust assumptions in real time to stress-test the valuation</p>
     </div>
     <div class="sensitivity-layout reveal">
@@ -619,7 +629,7 @@ body {
   <div class="container">
     <div class="section-header">
       <span class="section-number">06.6</span>
-      <h2>70% Discount to Optical Pure-Plays — Conglomerate Penalty = Alpha</h2>
+      <h2 data-i18n="s065">70% Discount to Optical Pure-Plays — Conglomerate Penalty = Alpha</h2>
       <p class="section-subtitle">GLW EV/EBITDA 22.5× vs. CIEN 80× and LITE 109× — despite 23.2% margins vs. 7% and 5%</p>
     </div>
 
@@ -791,7 +801,7 @@ body {
   <div class="container">
     <div class="section-header">
       <span class="section-number">07</span>
-      <h2>The Free Call Option</h2>
+      <h2 data-i18n="s08">The Free Call Option</h2>
       <p class="section-subtitle">Semiconductor glass business — zero priced, potentially material</p>
     </div>
     <div class="option-hero reveal">
@@ -862,7 +872,7 @@ body {
   <div class="container">
     <div class="section-header">
       <span class="section-number">08</span>
-      <h2>Supply Chain Map</h2>
+      <h2 data-i18n="s09">Supply Chain Map</h2>
       <p class="section-subtitle">Five-layer value chain — Corning's picks-and-shovels positioning</p>
     </div>
     <div class="supply-chain-map reveal">
@@ -1026,7 +1036,7 @@ body {
   <div class="container">
     <div class="section-header">
       <span class="section-number">10</span>
-      <h2>Competitive Moat Assessment</h2>
+      <h2 data-i18n="s10">Competitive Moat Assessment</h2>
       <p class="section-subtitle">Corning vs. competitors across five key dimensions</p>
     </div>
     <div class="moat-layout reveal">
@@ -1291,6 +1301,75 @@ document.addEventListener('keydown', function(e) {
       setTimeout(function() { window.location.href = href; }, 320);
     });
   });
+})();
+</script>
+
+<script>
+// === LANG TOGGLE i18n ===
+(function() {
+  const i18n = {
+    en: {
+      s01: 'Investment Thesis',
+      s02: 'Glass Substrate Adoption',
+      s03: 'Sum-of-the-Parts Valuation',
+      s04: 'Segment Revenue Mix',
+      s05: 'Financial Performance',
+      s06: 'Forward Estimates & Valuation',
+      s065: 'Trading Comps & DCF Valuation',
+      s07: 'What-If Scenario Builder',
+      s08: 'Semiconductor Glass Optionality',
+      s09: 'Supply Chain Map',
+      s10: 'Competitive Moat Assessment',
+      nav_thesis: 'Thesis',
+      nav_timeline: 'Timeline',
+      nav_sotp: 'SOTP',
+      nav_segments: 'Segments',
+      nav_financials: 'Financials',
+      nav_estimates: 'Estimates',
+      nav_whatif: 'What-If',
+      nav_optionality: 'Optionality',
+      nav_supplychain: 'Supply Chain',
+    },
+    zh: {
+      s01: '\u6295\u8cc7\u8ad6\u9ede',
+      s02: '\u73bb\u748f\u57fa\u677f\u63a1\u7528\u8def\u5f91',
+      s03: '\u5206\u90e8\u52a0\u7e3d\u4f30\u5024 (SOTP)',
+      s04: '\u90e8\u9580\u71df\u6536\u7d50\u69cb',
+      s05: '\u8ca1\u52d9\u8868\u73fe',
+      s06: '\u524d\u77bb\u4f30\u7b97\u8207\u4f30\u5024',
+      s065: '\u4ea4\u6613\u53ef\u6bd4\u516c\u53f8\u8207DCF',
+      s07: '\u60c5\u5883\u6a21\u64ec\u5668',
+      s08: '\u534a\u5c0e\u9ad4\u73bb\u748f\u9078\u64c7\u6b0a',
+      s09: '\u4f9b\u61c9\u93c8\u5730\u5716',
+      s10: '\u7af6\u722d\u8b77\u57ce\u6cb3\u8a55\u4f30',
+      nav_thesis: '\u8ad6\u9ede',
+      nav_timeline: '\u6642\u9593\u8ef8',
+      nav_sotp: 'SOTP',
+      nav_segments: '\u90e8\u9580',
+      nav_financials: '\u8ca1\u52d9',
+      nav_estimates: '\u4f30\u7b97',
+      nav_whatif: '\u60c5\u5883',
+      nav_optionality: '\u9078\u64c7\u6b0a',
+      nav_supplychain: '\u4f9b\u61c9\u93c8',
+    }
+  };
+
+  function applyLang(lang) {
+    const t = i18n[lang];
+    document.querySelectorAll('[data-i18n]').forEach(el => {
+      if (t[el.dataset.i18n] !== undefined) el.textContent = t[el.dataset.i18n];
+    });
+    document.querySelectorAll('.lang-btn').forEach(btn => {
+      btn.classList.toggle('active', btn.dataset.lang === lang);
+    });
+    localStorage.setItem('glw_lang', lang);
+  }
+
+  document.querySelectorAll('.lang-btn').forEach(btn => {
+    btn.addEventListener('click', () => applyLang(btn.dataset.lang));
+  });
+
+  applyLang(localStorage.getItem('glw_lang') || 'en');
 })();
 </script>
 </body>
