@@ -397,7 +397,7 @@ h1 em { font-style: normal; color: var(--sand); }
 
     <p class="eyebrow" data-i18n="eyebrow">Long Corning (GLW) · Built with Perplexity Computer</p>
 
-    <h1 data-i18n="title">Choose your <em>research view</em></h1>
+    <h1><span data-i18n="title_1">Choose your</span><br><em data-i18n="title_2">research view</em></h1>
 
     <p class="sub" data-i18n="subtitle">Same thesis. Two lenses. Click to enter.</p>
 
@@ -411,7 +411,7 @@ h1 em { font-style: normal; color: var(--sand); }
             <a href="bloomberg.html" class="card card-a">
               <div class="card-icon">⬡</div>
               <div class="card-body-inner d-flex flex-column" style="flex:1;">
-                <div class="card-label" data-i18n="cardA_label">Institutional View</div>
+                <div class="card-label" data-i18n="cardA_label">INSTITUTIONAL VIEW</div>
                 <div class="card-title" data-i18n="cardA_title">Bloomberg Terminal</div>
                 <div class="card-desc" data-i18n="cardA_desc">
                   Dense, data-first layout. KPI bar, thesis pillars, alpha vs. consensus chart, comp table, valuation bridge, and risk matrix — all on one screen.
@@ -439,7 +439,7 @@ h1 em { font-style: normal; color: var(--sand); }
             <a href="dashboard.html" class="card card-b">
               <div class="card-icon">◈</div>
               <div class="card-body-inner d-flex flex-column" style="flex:1;">
-                <div class="card-label" data-i18n="cardB_label">Interactive View</div>
+                <div class="card-label" data-i18n="cardB_label">INTERACTIVE VIEW</div>
                 <div class="card-title" data-i18n="cardB_title">Full Dashboard</div>
                 <div class="card-desc" data-i18n="cardB_desc">
                   Scrollable, interactive experience. Live scenario toggles, animated charts, sensitivity sliders, supply chain map, catalyst timeline, and more.
@@ -498,44 +498,47 @@ document.querySelectorAll('a[href$=".html"]').forEach(link => {
 // ── i18n ──
 const i18n = {
   en: {
-    eyebrow:     'Long Corning (GLW) · Built with Perplexity Computer',
-    title:       'Choose your <em>research view</em>',
-    subtitle:    'Same thesis. Two lenses. Click to enter.',
-    cardA_label: 'Institutional View',
+    eyebrow: 'Long Corning (GLW) · Built with Perplexity Computer',
+    title_1: 'Choose your',
+    title_2: 'research view',
+    subtitle: 'Same thesis. Two lenses. Click to enter.',
+    cardA_label: 'INSTITUTIONAL VIEW',
     cardA_title: 'Bloomberg Terminal',
-    cardA_desc:  'Dense, data-first layout. KPI bar, thesis pillars, alpha vs. consensus chart, comp table, valuation bridge, and risk matrix — all on one screen.',
-    cardA_cta:   'Open Terminal View',
-    cardB_label: 'Interactive View',
+    cardA_desc: 'Dense, data-first layout. KPI bar, thesis pillars, alpha vs. consensus chart, comp table, valuation bridge, and risk matrix — all on one screen.',
+    cardA_cta: 'Open Terminal View',
+    cardB_label: 'INTERACTIVE VIEW',
     cardB_title: 'Full Dashboard',
-    cardB_desc:  'Scrollable, interactive experience. Live scenario toggles, animated charts, sensitivity sliders, supply chain map, catalyst timeline, and more.',
-    cardB_cta:   'Open Full Dashboard',
-    meta1:       'Live Data · Apr 3, 2026',
-    meta2:       'Long GLW · Target $155–$166',
-    meta3:       'Built with Perplexity Computer',
+    cardB_desc: 'Scrollable, interactive experience. Live scenario toggles, animated charts, sensitivity sliders, supply chain map, catalyst timeline, and more.',
+    cardB_cta: 'Open Full Dashboard',
+    meta1: 'Live Data · Apr 3, 2026',
+    meta2: 'Long GLW · Target $155–$166',
+    meta3: 'Built with Perplexity Computer',
   },
   zh: {
-    eyebrow:     '做多康寧 (GLW) · 由 Perplexity Computer 建構',
-    title:       '選擇您的<em>研究視角</em>',
-    subtitle:    '相同論點，兩種呈現方式。點擊進入。',
+    eyebrow: '做多康寧 (GLW) · 由 Perplexity Computer 建構',
+    title_1: '選擇您的',
+    title_2: '研究視角',
+    subtitle: '相同論點，兩種呈現方式。點擊進入。',
     cardA_label: '機構研究視圖',
     cardA_title: 'Bloomberg 終端機',
-    cardA_desc:  '密集數據佈局。KPI 指標欄、論點支柱、Alpha vs 共識圖表、可比公司表、估值橋接圖與風險矩陣——全部在一個螢幕上。',
-    cardA_cta:   '開啟終端機視圖',
+    cardA_desc: '密集數據佈局。KPI 指標欄、論點支柱、Alpha vs 共識圖表、可比公司表、估值橋接圖與風險矩陣——全部在一個螢幕上。',
+    cardA_cta: '開啟終端機視圖',
     cardB_label: '互動式視圖',
     cardB_title: '完整儀表板',
-    cardB_desc:  '可滾動的互動式體驗。即時情境切換、動態圖表、敏感度滑桿、供應鏈地圖、催化劑時間軸等多項功能。',
-    cardB_cta:   '開啟完整儀表板',
-    meta1:       '即時數據 · 2026年4月3日',
-    meta2:       '做多 GLW · 目標 $155–$166',
-    meta3:       '由 Perplexity Computer 建構',
+    cardB_desc: '可滾動的互動式體驗。即時情境切換、動態圖表、敏感度滑桿、供應鏈地圖、催化劑時間軸等多項功能。',
+    cardB_cta: '開啟完整儀表板',
+    meta1: '即時數據 · 2026年4月3日',
+    meta2: '做多 GLW · 目標 $155–$166',
+    meta3: '由 Perplexity Computer 建構',
   }
 };
 
 function applyLang(lang) {
   const t = i18n[lang];
   document.querySelectorAll('[data-i18n]').forEach(el => {
-    const key = el.dataset.i18n;
-    if (t[key] !== undefined) el.innerHTML = t[key];
+    if (t[el.dataset.i18n] !== undefined) {
+      el.textContent = t[el.dataset.i18n];
+    }
   });
   document.querySelectorAll('.lang-btn').forEach(btn => {
     btn.classList.toggle('active', btn.dataset.lang === lang);
@@ -547,7 +550,7 @@ document.querySelectorAll('.lang-btn').forEach(btn => {
   btn.addEventListener('click', () => applyLang(btn.dataset.lang));
 });
 
-// Init language
+// Init
 applyLang(window._glwLang || 'en');
 </script>
 </body>
